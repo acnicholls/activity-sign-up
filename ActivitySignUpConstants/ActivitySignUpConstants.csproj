@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>ActivitySignUp.Services</RootNamespace>
+    <RootNamespace>ActivitySignUp.Constants</RootNamespace>
   </PropertyGroup>
 
 </Project>
