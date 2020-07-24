@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ac3211f5-67bb-42dd-9ec3-c6e28863f6fa" ChangeDateTime="07/24/2020 02:06:23">
+    <Property Name="ElementName" Value="[dbo].[Person].[IX_Person_Column]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[Person]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IDX_Person_Email_Activity]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="53d00a08-83bc-4ae4-ab0e-177dba138af4" ChangeDateTime="07/24/2020 02:08:30">
+    <Property Name="ElementName" Value="[dbo].[Comment].[IX_Comment_Column]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[Comment]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IDX_Comment_Activity]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="df44ffa4-b98c-4994-8e45-821362a3a1e2" ChangeDateTime="07/24/2020 02:09:18">
+    <Property Name="ElementName" Value="[dbo].[Comment].[IX_Comment_Column]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[Comment]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_Comment_Activity_Person]" />
+  </Operation>
+</Operations>
