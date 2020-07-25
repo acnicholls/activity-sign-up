@@ -5,7 +5,11 @@
 	@PersonActivityId int
 AS
 begin
+	declare @NewId int;
+
 	insert into Person (PersonFirstName, PersonLastName, PersonEmail, PersonActivityId)
 	values (@PersonFirstName, @PersonLastName, @PersonEmail, @PersonActivityId);
+
+	set @NewId = SCOPE_IDENTITY();
 end
 go

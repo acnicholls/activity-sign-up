@@ -69,10 +69,10 @@
     <Build Include="dbo\StoredProcedures\ActivityInsert.sql" />
     <Build Include="dbo\StoredProcedures\PersonInsert.sql" />
     <Build Include="dbo\StoredProcedures\CommentInsert.sql" />
-    <Build Include="dbo\StoredProcedures\ActivityGetPersonList.sql" />
-    <Build Include="dbo\StoredProcedures\ActivityGetCommentList.sql" />
     <Build Include="dbo\Functions\ActivityExists.sql" />
     <Build Include="dbo\Functions\PersonExistsInActivity.sql" />
+    <Build Include="dbo\StoredProcedures\ActivityGetInitialView.sql" />
+    <Build Include="dbo\StoredProcedures\ActivityGetView.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ActivitySignUpDatabase.refactorlog" />

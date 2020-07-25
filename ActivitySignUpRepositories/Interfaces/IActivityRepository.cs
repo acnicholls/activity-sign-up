@@ -1,8 +1,6 @@
-﻿using System;
+﻿using ActivitySignUp.Models.Activity;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using ActivitySignUp.Models.Activity;
 
 
 namespace ActivitySignUp.Repositories.Interfaces
@@ -10,12 +8,14 @@ namespace ActivitySignUp.Repositories.Interfaces
     public interface IActivityRepository
     {
 
-        Task<int> ActivityInsert(string name, string description, DateTime date, string image);
+        Task<int> ActivityInsertAsync(ActivityInsertModel model);
 
-        Task<bool> ActivityExists(string nameToCheck);
+        Task<bool> ActivityExistsAsync(string nameToCheck);
 
-        Task<List<ActivityListModel>> GetActivityList();
+        Task<ActivityViewModel> GetInitialActivityViewAsync(int activityId);
 
-        Task<ActivityViewModel> GetActivity(int activityId);
+        Task<ActivitySignedUpViewModel> GetSignedUpActivityViewAsync(int activityId);
+
+        Task<List<ActivityListModel>> GetActivityListAsync();
     }
 }

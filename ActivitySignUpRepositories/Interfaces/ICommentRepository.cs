@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ActivitySignUp.Models.Comment;
 using System.Threading.Tasks;
-using ActivitySignUp.Models.Comment;
 
 namespace ActivitySignUp.Repositories.Interfaces
 {
     public interface ICommentRepository
     {
-        Task<int> InsertComment(string content, int personId, int activityId);
+        Task<int> InsertCommentAsync(CommentInsertModel model);
 
-        Task<List<CommentListModel>> GetActivityComments(int activityId);
     }
 }
