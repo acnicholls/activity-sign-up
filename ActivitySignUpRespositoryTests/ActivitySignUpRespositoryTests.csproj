@@ -6,10 +6,16 @@
     <IsPackable>false</IsPackable>
 
     <RootNamespace>ActivitySignUp.RespositoryTests</RootNamespace>
+
+    <UserSecretsId>b59d811a-504b-41cd-a801-6cc22fcd2e2a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.6" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="Moq" Version="4.14.5" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
@@ -22,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ActivitySignUpModels\ActivitySignUpModels.csproj" />
+    <ProjectReference Include="..\ActivitySignUpRepositories\ActivitySignUpRepositories.csproj" />
   </ItemGroup>
 
 </Project>
