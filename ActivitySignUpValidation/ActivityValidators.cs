@@ -1,11 +1,11 @@
 ﻿using ActivitySignUp.Models;
 using ActivitySignUp.Models.Activity;
+using ActivitySignUp.Validation.Interfaces;
 
 namespace ActivitySignUp.Validation
 {
-    public class ActivityValidators
+    public class ActivityValidators : IActivityValidators
     {
-
         public ValidationResults ValidateInsertModel(ActivityInsertModel model)
         {
             var returnValue = new ValidationResults();

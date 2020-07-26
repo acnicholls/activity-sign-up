@@ -5,4 +5,8 @@
     <RootNamespace>ActivitySignUp.Validation</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ActivitySignUpModels\ActivitySignUpModels.csproj" />
+  </ItemGroup>
+
 </Project>

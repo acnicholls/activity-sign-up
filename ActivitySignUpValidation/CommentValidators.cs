@@ -1,9 +1,10 @@
 ﻿using ActivitySignUp.Models;
 using ActivitySignUp.Models.Comment;
+using ActivitySignUp.Validation.Interfaces;
 
 namespace ActivitySignUp.Validation
 {
-    public class CommentValidators
+    public class CommentValidators : ICommentValidators
     {
 
         public ValidationResults ValidateInsertModel(CommentInsertModel model)

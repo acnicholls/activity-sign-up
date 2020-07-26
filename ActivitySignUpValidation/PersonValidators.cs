@@ -1,10 +1,11 @@
 ﻿using ActivitySignUp.Models;
 using ActivitySignUp.Models.Person;
 using System.Net.Mail;
+using ActivitySignUp.Validation.Interfaces;
 
 namespace ActivitySignUp.Validation
 {
-    public class PersonValidators
+    public class PersonValidators : IPersonValidators
     {
 
         public ValidationResults ValidateInsertModel(PersonInsertModel model)
