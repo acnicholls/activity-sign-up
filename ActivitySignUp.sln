@@ -34,15 +34,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpValidation", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpRespositoryTests", "ActivitySignUpRespositoryTests\ActivitySignUpRespositoryTests.csproj", "{06B6F79F-E802-4C6B-9BEF-20A575F1C019}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpServiceTests", "ActivitySignUpServiceTests\ActivitySignUpServiceTests.csproj", "{A8446FA9-DAD7-4C47-B81F-F55DB2DA61C2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpValidationTests", "ActivitySignUpValidationTests\ActivitySignUpValidationTests.csproj", "{55470B86-943C-4D3A-BC26-A0D7E0934B40}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ActivitySignUpDatabase", "ActivitySignUpDatabase\ActivitySignUpDatabase.sqlproj", "{3E039112-422E-450F-8E0F-B7591F8C16D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivitySignUpModels", "ActivitySignUpModels\ActivitySignUpModels.csproj", "{64F5E8EC-169B-46E4-8204-614134DEC798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpModels", "ActivitySignUpModels\ActivitySignUpModels.csproj", "{64F5E8EC-169B-46E4-8204-614134DEC798}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivitySignUpConstants", "ActivitySignUpConstants\ActivitySignUpConstants.csproj", "{CB9CF937-F9DD-4535-BE3C-FE853180A912}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpConstants", "ActivitySignUpConstants\ActivitySignUpConstants.csproj", "{CB9CF937-F9DD-4535-BE3C-FE853180A912}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,14 +70,6 @@ Global
 		{06B6F79F-E802-4C6B-9BEF-20A575F1C019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06B6F79F-E802-4C6B-9BEF-20A575F1C019}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06B6F79F-E802-4C6B-9BEF-20A575F1C019}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8446FA9-DAD7-4C47-B81F-F55DB2DA61C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8446FA9-DAD7-4C47-B81F-F55DB2DA61C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8446FA9-DAD7-4C47-B81F-F55DB2DA61C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8446FA9-DAD7-4C47-B81F-F55DB2DA61C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55470B86-943C-4D3A-BC26-A0D7E0934B40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55470B86-943C-4D3A-BC26-A0D7E0934B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55470B86-943C-4D3A-BC26-A0D7E0934B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55470B86-943C-4D3A-BC26-A0D7E0934B40}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
