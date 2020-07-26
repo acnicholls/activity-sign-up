@@ -36,7 +36,7 @@ namespace ActivitySignUp.Services
                 using (var dbScope = ContextFactory.Create())
                 {
                     var commentId = await _repository.InsertCommentAsync(model);
-                    dbScope.Commit();
+                    dbScope.Transaction.Commit();
                     return validationResult.IsValid ?
                          new ServiceResult<int>(commentId) :
                          new ServiceResult<int>(validationResult.ValidationErrors);

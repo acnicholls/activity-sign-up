@@ -3,6 +3,8 @@
 AS
 begin
 
+	Select * from Activity A where A.ActivityId = @ActivityId;
+
 	Select
 		concat (PersonFirstName, ' ', PersonLastName) as PersonName
 	from

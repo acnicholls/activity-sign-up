@@ -4,6 +4,18 @@
         <name>ActivitySignUpApi</name>
     </assembly>
     <members>
+        <member name="T:ActivitySignUp.Api.Controllers.ActivityController">
+            <summary>
+            activity controller class
+            </summary>
+        </member>
+        <member name="M:ActivitySignUp.Api.Controllers.ActivityController.#ctor(Microsoft.Extensions.Logging.ILogger{ActivitySignUp.Api.Controllers.ActivityController},ActivitySignUp.Services.Interfaces.IActivityService)">
+            <summary>
+            activity controller ctor
+            </summary>
+            <param name="logger"></param>
+            <param name="service"></param>
+        </member>
         <member name="M:ActivitySignUp.Api.Controllers.ActivityController.InsertActivityAsync(System.String,System.String,System.DateTime,System.String)">
             <summary>
             this method will insert a new activity
@@ -52,6 +64,53 @@
             <param name="email"></param>
             <param name="activityId"></param>
             <returns></returns>
+        </member>
+        <member name="T:ActivitySignUpApi.Program">
+            <summary>
+            the program class
+            </summary>
+        </member>
+        <member name="M:ActivitySignUpApi.Program.Main(System.String[])">
+            <summary>
+            the entrypoint
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ActivitySignUpApi.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            builds the web host
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ActivitySignUpApi.Startup">
+            <summary>
+             the startup class
+            </summary>
+        </member>
+        <member name="M:ActivitySignUpApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            startup ctor
+            </summary>
+            <param name="configuration">the application configuration</param>
+        </member>
+        <member name="P:ActivitySignUpApi.Startup.Configuration">
+            <summary>
+            the application configuration
+            </summary>
+        </member>
+        <member name="M:ActivitySignUpApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            this method configures the services container for dependency injection
+            </summary>
+            <param name="services">the services container from the system's injection process</param>
+        </member>
+        <member name="M:ActivitySignUpApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            this method will configure the pipeline
+            </summary>
+            <param name="app">the application to configure</param>
+            <param name="env">the environment to configure the application for</param>
         </member>
     </members>
 </doc>

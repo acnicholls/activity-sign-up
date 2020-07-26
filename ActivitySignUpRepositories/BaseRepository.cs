@@ -2,12 +2,12 @@
 
 namespace ActivitySignUp.Repositories
 {
-    public class BaseRepository
+    public abstract class BaseRepository
     {
 
         private readonly IAmbientDbContextLocator _ambientDbContextLocator;
 
-        public BaseRepository(IAmbientDbContextLocator ambientDbContextLocator)
+        protected BaseRepository(IAmbientDbContextLocator ambientDbContextLocator)
         {
             _ambientDbContextLocator = ambientDbContextLocator;
         }

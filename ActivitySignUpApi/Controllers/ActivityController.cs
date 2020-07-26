@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ActivitySignUp.Api.Controllers
 {
+    /// <summary>
+    /// activity controller class
+    /// </summary>
     [Route("api/activity")]
     [ApiController]
     public class ActivityController : ControllerBase
@@ -15,6 +18,11 @@ namespace ActivitySignUp.Api.Controllers
         private readonly IActivityService _service;
         private readonly ILogger<ActivityController> _logger;
 
+        /// <summary>
+        /// activity controller ctor
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="service"></param>
         public ActivityController(
             ILogger<ActivityController> logger,
             IActivityService service
@@ -101,7 +109,7 @@ namespace ActivitySignUp.Api.Controllers
         /// </summary>
         /// <param name="activityId"></param>
         /// <returns></returns>
-        [HttpGet("/{activityId}")]
+        [HttpGet("{activityId}")]
         public async Task<ActionResult> GetInitialActivityViewAsync(int activityId)
         {
             try
@@ -129,7 +137,7 @@ namespace ActivitySignUp.Api.Controllers
         /// </summary>
         /// <param name="activityId"></param>
         /// <returns></returns>
-        [HttpGet("/{activityId}/signed-up")]
+        [HttpGet("{activityId}/signed-up")]
         public async Task<ActionResult> GetSignedUpActivityViewAsync(int activityId)
         {
             try

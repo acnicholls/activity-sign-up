@@ -40,7 +40,7 @@ namespace ActivitySignUp.Services
                         if (!(await _repository.CheckPersonExistsInActivityAsync(model.PersonActivityId, model.PersonEmail)))
                         {
                             var personId = await _repository.InsertPersonAsync(model);
-                            dbScope.Commit();
+                            dbScope.Transaction.Commit();
                             return new ServiceResult<int>(personId);
                         }
                     }

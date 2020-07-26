@@ -73,8 +73,15 @@ namespace ActivitySignUp.Repositories
             parameters.Add("ActivityId", activityId, DbType.Int32);
             var queryResult = await DbContext.QueryMultipleAsync(StoredProcedures.ActivityGetView, parameters, commandType: CommandType.StoredProcedure);
 
+            var tmpActivity = await queryResult.ReadSingleOrDefaultAsync<ActivityModel>();
+
             var returnvalue = new ActivitySignedUpViewModel
             {
+                ActivityId = tmpActivity.ActivityId,
+                ActivityName = tmpActivity.ActivityName,
+                ActivityDescription = tmpActivity.ActivityDescription,
+                ActivityDateTime = tmpActivity.ActivityDateTime,
+                ActivityImage = tmpActivity.ActivityImage,
                 ParticipantList = (await queryResult.ReadAsync<PersonListModel>()).ToList(),
                 CommentList = (await queryResult.ReadAsync<CommentListModel>()).ToList()
             };

@@ -3,25 +3,22 @@ using Dapper.AmbientContext.Storage;
 
 namespace ActivitySignUp.Services
 {
-    public class BaseService
+    /// <summary>
+    /// the base service
+    /// </summary>
+    public abstract class BaseService
     {
 
-        //protected IAmbientDbContextQueryProxy DbContext;
         protected IAmbientDbContextFactory ContextFactory;
-        //protected IAmbientDbContextLocator ContextLocator;
 
-        public BaseService(
-            IAmbientDbContextFactory factory//,
-            //IAmbientDbContextLocator locator
+        protected BaseService(
+            IAmbientDbContextFactory factory
             )
         {
-            ContextFactory = factory;
-            //ContextLocator = locator;
             AmbientDbContextStorageProvider.SetStorage(new AsyncLocalContextStorage());
+            ContextFactory = factory;
 
             ContextFactory.Create();
-
-            //DbContext = ContextLocator.Get();
         }
 
     }

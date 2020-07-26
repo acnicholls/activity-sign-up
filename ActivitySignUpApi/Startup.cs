@@ -17,15 +17,29 @@ using System;
 
 namespace ActivitySignUpApi
 {
+    /// <summary>
+    ///  the startup class
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// startup ctor
+        /// </summary>
+        /// <param name="configuration">the application configuration</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// the application configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
 
+        /// <summary>
+        /// this method configures the services container for dependency injection
+        /// </summary>
+        /// <param name="services">the services container from the system's injection process</param>
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -60,6 +74,11 @@ namespace ActivitySignUpApi
             });
         }
 
+        /// <summary>
+        /// this method will configure the pipeline
+        /// </summary>
+        /// <param name="app">the application to configure</param>
+        /// <param name="env">the environment to configure the application for</param>
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

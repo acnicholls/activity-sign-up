@@ -23,5 +23,9 @@
     <ProjectReference Include="..\ActivitySignUpServices\ActivitySignUpServices.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dapper\" />
+  </ItemGroup>
+
 
 </Project>
