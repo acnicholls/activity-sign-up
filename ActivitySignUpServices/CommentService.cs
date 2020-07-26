@@ -1,21 +1,25 @@
 ﻿using ActivitySignUp.Models;
 using ActivitySignUp.Models.Comment;
-using ActivitySignUp.Models.Person;
 using ActivitySignUp.Repositories.Interfaces;
 using ActivitySignUp.Services.Interfaces;
 using ActivitySignUp.Validation.Interfaces;
+using Dapper.AmbientContext;
 using System;
 using System.Threading.Tasks;
 
 namespace ActivitySignUp.Services
 {
-    public class CommentService : ICommentService
+    public class CommentService : BaseService, ICommentService
     {
 
         private ICommentRepository _repository;
         private ICommentValidators _validators;
 
-        public CommentService(ICommentRepository repository, ICommentValidators validators)
+        public CommentService(
+            IAmbientDbContextFactory factory,
+            ICommentRepository repository,
+            ICommentValidators validators)
+            : base(factory)
         {
             _repository = repository;
             _validators = validators;
@@ -29,9 +33,12 @@ namespace ActivitySignUp.Services
                 // validate
                 var validationResult = _validators.ValidateInsertModel(model);
 
-                return validationResult.IsValid ?
-                     new ServiceResult<int>(await _repository.InsertCommentAsync(model)) :
-                     new ServiceResult<int>(validationResult.ValidationErrors);
+                using (var dbScope = ContextFactory.Create())
+                {
+                    return validationResult.IsValid ?
+                         new ServiceResult<int>(await _repository.InsertCommentAsync(model)) :
+                         new ServiceResult<int>(validationResult.ValidationErrors);
+                }
             }
             catch (Exception x)
             {
