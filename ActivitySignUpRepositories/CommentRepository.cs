@@ -2,6 +2,7 @@
 using ActivitySignUp.Models.Comment;
 using ActivitySignUp.Repositories.Interfaces;
 using Dapper;
+using Dapper.AmbientContext;
 using System.Data;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace ActivitySignUp.Repositories
     public class CommentRepository : BaseRepository, ICommentRepository
     {
 
-        public CommentRepository(IDbConnectionFactory connectionFactory) : base(connectionFactory)
+        public CommentRepository(IAmbientDbContextLocator ambientDbContextLocator) : base(ambientDbContextLocator)
         { }
 
         /// <summary>

@@ -1,14 +1,14 @@
 ﻿CREATE PROCEDURE [dbo].[ActivityInsert]
 	@ActivityName varchar(50),
 	@ActivityDescription varchar(250),
-	@ActivityDate datetime,
-	@ActivityImage varchar(100)
+	@ActivityDateTime datetime,
+	@ActivityImage varchar(100),
+	@NewId int output
 AS
 begin
-	declare @NewId int;
 
-	insert into Activity (ActivityName, ActivityDescription, ActivityDate, ActivityImage)
-	values (@ActivityName, @ActivityDescription, @ActivityDate, @ActivityImage);
+	insert into Activity (ActivityName, ActivityDescription, ActivityDateTime, ActivityImage)
+	values (@ActivityName, @ActivityDescription, @ActivityDateTime, @ActivityImage);
 
 	set @NewId = SCOPE_IDENTITY();
 end

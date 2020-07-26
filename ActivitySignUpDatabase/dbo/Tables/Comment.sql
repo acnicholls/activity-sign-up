@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Comment]
 (
 	CommentId int primary key clustered identity,
-	CommmentPersonId int not null constraint FK_Comment_Person foreign key references Person (PersonId),
+	CommentPersonId int not null constraint FK_Comment_Person foreign key references Person (PersonId),
 	CommentActivityId int not null constraint FK_Comment_Activity foreign key references Activity (ActivityId),
 	CommentContent varchar(250) not null,
 	CommentDateTime datetime not null

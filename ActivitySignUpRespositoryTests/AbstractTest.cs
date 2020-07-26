@@ -1,13 +1,16 @@
 ﻿using Dapper.AmbientContext;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace ActivitySignUp.Repositories
+namespace ActivitySignUp.RespositoryTests
 {
-    public class BaseRepository
+    public abstract class AbstractTest
     {
 
         private readonly IAmbientDbContextLocator _ambientDbContextLocator;
 
-        public BaseRepository(IAmbientDbContextLocator ambientDbContextLocator)
+        protected AbstractTest(IAmbientDbContextLocator ambientDbContextLocator)
         {
             _ambientDbContextLocator = ambientDbContextLocator;
         }
@@ -16,5 +19,6 @@ namespace ActivitySignUp.Repositories
         {
             get { return _ambientDbContextLocator.Get(); }
         }
+
     }
 }

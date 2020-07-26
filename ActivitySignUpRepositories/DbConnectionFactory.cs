@@ -1,4 +1,4 @@
-﻿using ActivitySignUp.Repositories.Interfaces;
+﻿using Dapper.AmbientContext;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,7 +16,7 @@ namespace ActivitySignUp.Repositories
             _configuration = configuration;
         }
 
-        public IDbConnection CreateConnection()
+        public IDbConnection Create()
         {
             return new SqlConnection(_configuration.GetConnectionString("ActivitySignUpDatabase"));
         }

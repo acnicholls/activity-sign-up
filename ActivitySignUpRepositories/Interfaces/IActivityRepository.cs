@@ -8,11 +8,11 @@ namespace ActivitySignUp.Repositories.Interfaces
     public interface IActivityRepository
     {
 
-        Task<int> ActivityInsertAsync(ActivityInsertModel model);
+        Task<int> InsertActivityAsync(ActivityInsertModel model);
 
-        Task<bool> ActivityExistsAsync(string nameToCheck);
+        Task<bool> CheckActivityExistsAsync(string nameToCheck);
 
-        Task<ActivityViewModel> GetInitialActivityViewAsync(int activityId);
+        Task<ActivityModel> GetInitialActivityViewAsync(int activityId);
 
         Task<ActivitySignedUpViewModel> GetSignedUpActivityViewAsync(int activityId);
 

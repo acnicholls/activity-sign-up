@@ -4,7 +4,7 @@ begin
 	SELECT
 		ActivityId,
 		ActivityName,
-		ActivityDate,
+		ActivityDateTime,
 		ActivityImage
 	from
 		Activity

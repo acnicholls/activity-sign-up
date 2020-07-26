@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ActivitySignUp.Models.Activity
 {
-    public class ActivityViewModel
+    public class ActivityModel
     {
         public int ActivityId { get; set; }
         public string ActivityName { get; set; }

@@ -6,7 +6,7 @@ begin
 		a.ActivityId,
 		a.ActivityName,
 		a.ActivityDescription,
-		a.ActivityDate,
+		a.ActivityDateTime,
 		a.ActivityImage
 	FROM
 		Activity a

@@ -2,13 +2,12 @@
 	@CommentPersonId int,
 	@CommentActivityId int,
 	@CommentContent varchar(250),
-	@CommentDateTime datetime
+	@NewId int output
 AS
 begin
-	declare @NewId int;
 
-	insert into Comment (CommmentPersonId, CommentActivityId, CommentContent, CommentDateTime)
-	values (@CommentPersonId, @CommentActivityId, @CommentContent, @CommentDateTime);
+	insert into Comment (CommentPersonId, CommentActivityId, CommentContent, CommentDateTime)
+	values (@CommentPersonId, @CommentActivityId, @CommentContent, GETDATE());
 
 	set @NewId = SCOPE_IDENTITY();
 end

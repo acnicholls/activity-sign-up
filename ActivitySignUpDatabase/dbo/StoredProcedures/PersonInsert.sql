@@ -2,10 +2,10 @@
 	@PersonFirstName varchar(50),
 	@PersonLastName varchar(50),
 	@PersonEmail varchar(120),
-	@PersonActivityId int
+	@PersonActivityId int,
+	@NewId int output
 AS
 begin
-	declare @NewId int;
 
 	insert into Person (PersonFirstName, PersonLastName, PersonEmail, PersonActivityId)
 	values (@PersonFirstName, @PersonLastName, @PersonEmail, @PersonActivityId);

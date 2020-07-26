@@ -2,6 +2,7 @@
 using ActivitySignUp.Models.Person;
 using ActivitySignUp.Repositories.Interfaces;
 using Dapper;
+using Dapper.AmbientContext;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace ActivitySignUp.Repositories
     public class PersonRepository : BaseRepository, IPersonRepository
     {
 
-        public PersonRepository(IDbConnectionFactory connectionFactory) : base(connectionFactory)
+        public PersonRepository(IAmbientDbContextLocator ambientDbContextLocator) : base(ambientDbContextLocator)
         { }
 
         /// <summary>
@@ -31,6 +32,19 @@ namespace ActivitySignUp.Repositories
             await DbContext.ExecuteAsync(StoredProcedures.PersonInsert, parameters, commandType: CommandType.StoredProcedure);
 
             return parameters.Get<int>("NewId");
+        }
+
+        public async Task<bool> CheckPersonExistsInActivityAsync(int activityId, string email)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("PersonActivityId", activityId, DbType.Int32);
+            parameters.Add("PersonEmail", email, DbType.String);
+            parameters.Add("Result", dbType: DbType.Boolean, direction: ParameterDirection.Output);
+
+            await DbContext.ExecuteAsync(StoredProcedures.PersonExistsInActivityCheck, parameters, commandType: CommandType.StoredProcedure);
+
+            return parameters.Get<bool>("Result");
+
         }
     }
 }

@@ -21,7 +21,7 @@ begin
 		format(c.CommentDateTime, 'HH:mm') ) as CommentDetail,
 		CommentContent
 	from
-		Comment c inner join Person p on c.CommmentPersonId = p.PersonId
+		Comment c inner join Person p on c.CommentPersonId = p.PersonId
 	where
 		CommentActivityId = @ActivityId
 	order by
