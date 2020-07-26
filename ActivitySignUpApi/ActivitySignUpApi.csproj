@@ -3,7 +3,25 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>ActivitySignUp.Api</RootNamespace>
+    <UserSecretsId>c12b8bf5-e1b6-42d1-a0dc-23245c6d6ce6</UserSecretsId>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>ActivitySignUpApi.xml</DocumentationFile>
+    <OutputPath>A:\source\githubRepos\activity-sign-up\ActivitySignUpApi\bin\Debug\netcoreapp3.1</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.AmbientContext" Version="1.8.1" />
+    <PackageReference Include="NLog" Version="4.7.2" />
+    <PackageReference Include="NLog.Config" Version="4.7.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ActivitySignUpModels\ActivitySignUpModels.csproj" />
+    <ProjectReference Include="..\ActivitySignUpServices\ActivitySignUpServices.csproj" />
+  </ItemGroup>
 
 
 </Project>

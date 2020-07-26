@@ -9,6 +9,7 @@ namespace ActivitySignUp.Models
         public ServiceResult(T value)
         {
             Payload = value;
+            Errors = new List<ValidationError>();
         }
 
         public ServiceResult(List<ValidationError> errorList)
@@ -24,12 +25,13 @@ namespace ActivitySignUp.Models
         public ServiceResult(ServiceError serviceError)
         {
             Exception = serviceError;
+            Errors = new List<ValidationError>();
         }
 
         public bool IsSuccessful => !Errors.Any() && Exception==null;
         public T Payload { get; set; }
         public List<ValidationError> Errors { get; set; }
-
+        public bool IsException => !Errors.Any();
         public ServiceError Exception { get; set; }
     }
 }

@@ -16,8 +16,8 @@ namespace ActivitySignUp.Services
 
         public PersonService(
             IAmbientDbContextFactory factory,
-            IPersonRepository repository, 
-            IPersonValidators validators) 
+            IPersonRepository repository,
+            IPersonValidators validators)
             : base(factory)
         {
             _repository = repository;
@@ -34,9 +34,16 @@ namespace ActivitySignUp.Services
 
                 using (var dbScope = ContextFactory.Create())
                 {
-                    return validationResult.IsValid ?
-                         new ServiceResult<int>(await _repository.InsertPersonAsync(model)) :
-                         new ServiceResult<int>(validationResult.ValidationErrors);
+
+                    if (validationResult.IsValid)
+                    {
+                        if (!(await _repository.CheckPersonExistsInActivityAsync(model.PersonActivityId, model.PersonEmail)))
+                        {
+                            return new ServiceResult<int>(await _repository.InsertPersonAsync(model));
+                        }
+                    }
+
+                    return new ServiceResult<int>(validationResult.ValidationErrors);
                 }
             }
             catch (Exception x)
@@ -45,28 +52,5 @@ namespace ActivitySignUp.Services
             }
 
         }
-
-
-        public async Task<ServiceResult<bool>> CheckPersonExistsInActivityAsync(int activityId, string email)
-        {
-            try
-            {
-                // validate 
-                var validationResult = _validators.ValidateCheckEmail(email);
-
-                using (var dbScope = ContextFactory.Create())
-                {
-                    return validationResult.IsValid ?
-                        new ServiceResult<bool>(await _repository.CheckPersonExistsInActivityAsync(activityId, email)) :
-                        new ServiceResult<bool>(validationResult.ValidationErrors);
-                }
-            }
-            catch (Exception x)
-            {
-                return new ServiceResult<bool>(new ServiceError() { Location = "CheckPersonExistsInActivityAsync", Exception = x.Message });
-            }
-
-        }
-
     }
 }

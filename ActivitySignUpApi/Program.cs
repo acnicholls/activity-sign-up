@@ -13,11 +13,18 @@ namespace ActivitySignUpApi
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args)
+                .Build()
+                .Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddJsonFile("appsettings.json");
+                    config.AddUserSecrets("c12b8bf5-e1b6-42d1-a0dc-23245c6d6ce6");
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

@@ -8,7 +8,5 @@ namespace ActivitySignUp.Services.Interfaces
     {
 
         Task<ServiceResult<int>> InsertPersonAsync(PersonInsertModel model);
-
-        Task<ServiceResult<bool>> CheckPersonExistsInActivityAsync(int activityId, string email);
     }
 }

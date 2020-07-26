@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ActivitySignUpApi</name>
+    </assembly>
+    <members>
+        <member name="M:ActivitySignUp.Api.Controllers.ActivityController.InsertActivityAsync(System.String,System.String,System.DateTime,System.String)">
+            <summary>
+            this method will insert a new activity
+            </summary>
+            <param name="name"></param>
+            <param name="decription"></param>
+            <param name="date"></param>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ActivitySignUp.Api.Controllers.ActivityController.GetActivityListAsync">
+            <summary>
+            this method will get the list of all activities
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ActivitySignUp.Api.Controllers.ActivityController.GetInitialActivityViewAsync(System.Int32)">
+            <summary>
+            this method will get an activity's data for a non-signed up user
+            </summary>
+            <param name="activityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ActivitySignUp.Api.Controllers.ActivityController.GetSignedUpActivityViewAsync(System.Int32)">
+            <summary>
+            this method will get the activity's data for a signed in user
+            </summary>
+            <param name="activityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ActivitySignUp.Api.Controllers.CommentController.InsertCommentAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            this method will insert a new comment
+            </summary>
+            <param name="personId"></param>
+            <param name="activityId"></param>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ActivitySignUp.Api.Controllers.PersonController.InsertPersonAsync(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            this method will sign a new user up for an activity
+            </summary>
+            <param name="firstName"></param>
+            <param name="lastName"></param>
+            <param name="email"></param>
+            <param name="activityId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
