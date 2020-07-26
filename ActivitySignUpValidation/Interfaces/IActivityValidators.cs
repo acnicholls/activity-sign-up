@@ -5,6 +5,6 @@ namespace ActivitySignUp.Validation.Interfaces
 {
     public interface IActivityValidators
     {
-        ValidationResults ValidateInsertModel(PersonInsertModel model);
+        ValidationResults ValidateInsertModel(ActivityInsertModel model);
     }
 }
