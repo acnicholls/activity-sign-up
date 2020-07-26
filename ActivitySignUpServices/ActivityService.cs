@@ -84,7 +84,9 @@ namespace ActivitySignUp.Services
                         // check that the activity doesn't already exist
                         if (!(await _repository.CheckActivityExistsAsync(model.ActivityName)))
                         {
-                            return new ServiceResult<int>(await _repository.InsertActivityAsync(model));
+                            var activityId = await _repository.InsertActivityAsync(model);
+                            dbScope.Commit();
+                            return new ServiceResult<int>(activityId);
                         }
                     }
                 }
