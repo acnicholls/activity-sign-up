@@ -5,7 +5,12 @@ namespace ActivitySignUp.Models
 {
     public class ValidationResults
     {
-        public bool IsValid => !ValidationErrors.Any();
+        public ValidationResults()
+        {
+            ValidationErrors = new List<ValidationError>();
+        }
+
+        public bool IsValid { get { return !ValidationErrors.Any(); } } 
 
         public List<ValidationError> ValidationErrors { get; set; }
     }

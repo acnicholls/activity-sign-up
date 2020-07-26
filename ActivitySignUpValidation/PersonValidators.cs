@@ -37,5 +37,24 @@ namespace ActivitySignUp.Validation
         }
 
 
+        public ValidationResults ValidateCheckEmail(string email)
+        {
+            var returnValue = new ValidationResults();
+            if (email.Length > 120)
+            {
+                returnValue.ValidationErrors.Add(new ValidationError() { FieldName = "CheckEmail", ErrorDetail = "The email is too long." });
+            }
+            try
+            {
+                var address = new MailAddress(email);
+            }
+            catch
+            {
+                returnValue.ValidationErrors.Add(new ValidationError() { FieldName = "CheckEmail", ErrorDetail = "The email is not a valid email address." });
+            }
+
+            return returnValue;
+        }
+
     }
 }

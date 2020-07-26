@@ -7,5 +7,6 @@ namespace ActivitySignUp.Repositories.Interfaces
     {
         Task<int> InsertPersonAsync(PersonInsertModel model);
 
+        Task<bool> CheckPersonExistsInActivityAsync(int activityId, string email);
     }
 }

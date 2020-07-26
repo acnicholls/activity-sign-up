@@ -7,7 +7,7 @@ AS
 BEGIN
 	if exists (Select 1 from Person where PersonActivityId = @PersonActivityId and PersonEmail = @PersonEmail)
 	begin
-		set @result =  1;
+		set @Result =  1;
 		return;
 	end
 	set @Result = 0;
