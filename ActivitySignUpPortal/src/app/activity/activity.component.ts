@@ -1,7 +1,7 @@
 import { ActivitySignedUpViewModel } from './../ActivitySignedUpViewModel';
 import { ActivityModel } from './../ActivityModel';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CookieService } from 'ngx-cookie';
+// import { CookieService } from 'ngx-cookie';
 import { ActivatedRoute } from '@angular/router';
 import { DataAccessService} from '../services/data-access.service';
 import { Subscription } from 'rxjs';
@@ -25,19 +25,18 @@ export class ActivityComponent implements OnInit {
 
   constructor(
     private dataAccessService: DataAccessService,
-    private cookieService: CookieService,
+    // private cookieService: CookieService,
     private routeService: ActivatedRoute
-    ) {
-
-     }
+    ) {     }
 
   ngOnInit(): void {
       // parse the cookie content for the activity Id
       const routeId  = this.routeService.snapshot.data[this.searchTerm];
       // if it exists, show the participant list/ comment list
-      const cookieContent = this.cookieService.get(routeId.toString());
+      // const cookieContent = this.cookieService.get(routeId.toString());
 
-      if (!(cookieContent == null) && cookieContent === 'true')
+      // if (!(cookieContent == null) && cookieContent === 'true')
+      if (false)
       {
         this.dataAccessService.getSignedUpActivity(routeId).subscribe(
             (returnValue) => {
@@ -59,10 +58,6 @@ export class ActivityComponent implements OnInit {
             }
           );
         }
-  }
-
-  ngOnDestroy() {
-    this.routeSub.unsubscribe();
   }
 
 }

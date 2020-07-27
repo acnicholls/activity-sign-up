@@ -1,11 +1,34 @@
-activityName{
+.activityName{
     font-size:16;
 }
 
-activityDate{
+.activityDate{
     text-align:center;
 }
 
-activityListTable{
-    background-color: gray;
+.activityListTable{
+    background-color: darkgray;
+    height:150px;
+    width: 200px;
+    padding:15px;
+}
+
+.activityListTable td{
+    padding:15px;
+}
+
+.activityCell{
+    margin:10px;
+}
+
+.activityLink {
+    text-decoration-color: black;
+}
+
+.activityLink :hover {
+    text-decoration-color: black;
+}
+
+.activityLink :visited {
+    text-decoration-color: black;
 }
