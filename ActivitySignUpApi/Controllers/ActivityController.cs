@@ -36,27 +36,11 @@ namespace ActivitySignUp.Api.Controllers
         /// <summary>
         /// this method will insert a new activity
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="decription"></param>
-        /// <param name="date"></param>
-        /// <param name="image"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult> InsertActivityAsync(
-            string name,
-            string decription,
-            DateTime date,
-            string image
-        )
+        /// <param name="activity">model containing the values to insert</param>
+        /// <returns>the newly inserted Id</returns>
+        [HttpPost("new")]
+        public async Task<ActionResult> InsertActivityAsync(ActivityInsertModel activity)
         {
-            var activity = new ActivityInsertModel()
-            {
-                ActivityDateTime = date,
-                ActivityDescription = decription,
-                ActivityImage = image,
-                ActivityName = name
-            };
-
             try
             {
                 var srvResult = await _service.InsertActivityAsync(activity);

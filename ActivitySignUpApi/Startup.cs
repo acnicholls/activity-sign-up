@@ -5,15 +5,18 @@ using ActivitySignUp.Services.Interfaces;
 using ActivitySignUp.Validation;
 using ActivitySignUp.Validation.Interfaces;
 using Dapper.AmbientContext;
+using Dapper.AmbientContext.Storage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Dapper.AmbientContext.Storage;
-using System.Reflection;
-using System.IO;
 using System;
+using System.IO;
+using System.Reflection;
+using Swashbuckle.Examples;
+using Microsoft.OpenApi.Models;
+using Swashbuckle;
 
 namespace ActivitySignUpApi
 {
@@ -36,6 +39,8 @@ namespace ActivitySignUpApi
         /// </summary>
         public IConfiguration Configuration { get; }
 
+        private const string _myCorsPolicyName = "AllowFromFrontEnd";
+
         /// <summary>
         /// this method configures the services container for dependency injection
         /// </summary>
@@ -43,6 +48,16 @@ namespace ActivitySignUpApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: _myCorsPolicyName,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
             services.AddControllers();
 
             services.AddSingleton<IConfiguration>(Configuration);
@@ -67,6 +82,8 @@ namespace ActivitySignUpApi
 
             services.AddSwaggerGen(c =>
             {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ActivitySignUpApi", Version = "v1" });
+                //c.OperationFilter<ExamplesOperationFilter>();
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -99,7 +116,9 @@ namespace ActivitySignUpApi
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseCors(_myCorsPolicyName);
+
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

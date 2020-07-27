@@ -9,6 +9,10 @@ namespace ActivitySignUp.Validation
         public ValidationResults ValidateInsertModel(ActivityInsertModel model)
         {
             var returnValue = new ValidationResults();
+            if(model == null)
+            {
+                returnValue.ValidationErrors.Add(new ValidationError() { FieldName = "model", ErrorDetail = "The model cannot be null." });
+            }
             if(model.ActivityName.Length > 50)
             {
                 returnValue.ValidationErrors.Add(new ValidationError() { FieldName = "ActivityName", ErrorDetail = "The name is too long." });

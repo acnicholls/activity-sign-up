@@ -88,6 +88,7 @@ namespace ActivitySignUp.Services
                             dbScope.Transaction.Commit();
                             return new ServiceResult<int>(activityId);
                         }
+                        return new ServiceResult<int>(new ValidationError() { FieldName = "ActivityName", ErrorDetail = "An activity with that name already exists." });
                     }
                 }
                 return new ServiceResult<int>(validationResult.ValidationErrors);

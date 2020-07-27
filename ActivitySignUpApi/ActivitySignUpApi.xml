@@ -16,15 +16,12 @@
             <param name="logger"></param>
             <param name="service"></param>
         </member>
-        <member name="M:ActivitySignUp.Api.Controllers.ActivityController.InsertActivityAsync(System.String,System.String,System.DateTime,System.String)">
+        <member name="M:ActivitySignUp.Api.Controllers.ActivityController.InsertActivityAsync(ActivitySignUp.Models.Activity.ActivityInsertModel)">
             <summary>
             this method will insert a new activity
             </summary>
-            <param name="name"></param>
-            <param name="decription"></param>
-            <param name="date"></param>
-            <param name="image"></param>
-            <returns></returns>
+            <param name="activity">model containing the values to insert</param>
+            <returns>the newly inserted Id</returns>
         </member>
         <member name="M:ActivitySignUp.Api.Controllers.ActivityController.GetActivityListAsync">
             <summary>
@@ -46,24 +43,19 @@
             <param name="activityId"></param>
             <returns></returns>
         </member>
-        <member name="M:ActivitySignUp.Api.Controllers.CommentController.InsertCommentAsync(System.Int32,System.Int32,System.String)">
+        <member name="M:ActivitySignUp.Api.Controllers.CommentController.InsertCommentAsync(ActivitySignUp.Models.Comment.CommentInsertModel)">
             <summary>
             this method will insert a new comment
             </summary>
-            <param name="personId"></param>
-            <param name="activityId"></param>
-            <param name="content"></param>
-            <returns></returns>
+            <param name="comment">the model containing the values of the new record</param>
+            <returns>teh newly inserted Id</returns>
         </member>
-        <member name="M:ActivitySignUp.Api.Controllers.PersonController.InsertPersonAsync(System.String,System.String,System.String,System.Int32)">
+        <member name="M:ActivitySignUp.Api.Controllers.PersonController.InsertPersonAsync(ActivitySignUp.Models.Person.PersonInsertModel)">
             <summary>
             this method will sign a new user up for an activity
             </summary>
-            <param name="firstName"></param>
-            <param name="lastName"></param>
-            <param name="email"></param>
-            <param name="activityId"></param>
-            <returns></returns>
+            <param name="person">the model containing the values of the new record</param>
+            <returns>the newly inserted Id</returns>
         </member>
         <member name="T:ActivitySignUpApi.Program">
             <summary>

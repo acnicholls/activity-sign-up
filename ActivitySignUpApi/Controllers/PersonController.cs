@@ -27,27 +27,11 @@ namespace ActivitySignUp.Api.Controllers
         /// <summary>
         /// this method will sign a new user up for an activity
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="email"></param>
-        /// <param name="activityId"></param>
-        /// <returns></returns>
+        /// <param name="person">the model containing the values of the new record</param>
+        /// <returns>the newly inserted Id</returns>
         [HttpPost]
-        public async Task<ActionResult> InsertPersonAsync(
-            string firstName,
-            string lastName,
-            string email,
-            int activityId
-            )
+        public async Task<ActionResult> InsertPersonAsync(PersonInsertModel person)
         {
-            var person = new PersonInsertModel()
-            {
-                PersonActivityId = activityId,
-                PersonEmail = email,
-                PersonFirstName = firstName,
-                PersonLastName = lastName
-            };
-
             try
             {
                 var srvResult = await _service.InsertPersonAsync(person);

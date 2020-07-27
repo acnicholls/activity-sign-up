@@ -1,0 +1,28 @@
+<div class="container">
+    
+    <h1>Activity List</h1>
+
+    <div class="row">
+        <div *ngFor="let activity of activityList" class="col-sm-1 col-md-2, col-lg-2">
+            <a href="/activity/{{activity.activityId}}" target="_self">
+                <table class="activityListTable">
+                    <tr>
+                        <td class="activityDate">
+                            {{activity.activityDateTime | date:'yyyy-mm-dd' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background-image:url('{{activity.activityImage}}');">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="activityName">
+                            {{activity.activityName}}
+                        </td>
+                    </tr>
+                </table>
+            </a>
+        </div>
+    </div>
+</div>

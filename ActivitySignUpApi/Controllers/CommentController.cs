@@ -29,24 +29,11 @@ namespace ActivitySignUp.Api.Controllers
         /// <summary>
         /// this method will insert a new comment
         /// </summary>
-        /// <param name="personId"></param>
-        /// <param name="activityId"></param>
-        /// <param name="content"></param>
-        /// <returns></returns>
+        /// <param name="comment">the model containing the values of the new record</param>
+        /// <returns>teh newly inserted Id</returns>
         [HttpPost]
-        public async Task<ActionResult> InsertCommentAsync(
-            int personId,
-            int activityId,
-            string content
-            )
+        public async Task<ActionResult> InsertCommentAsync(CommentInsertModel comment)
         {
-            var comment = new CommentInsertModel()
-            {
-                CommentActivityId = activityId,
-                CommentPersonId = personId,
-                CommentContent = content
-            };
-
             try
             {
                 var srvResult = await _service.InsertCommentAsync(comment);
