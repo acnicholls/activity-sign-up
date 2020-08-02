@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // automatically send the user to the activity-list component
-    // this.routeService.navigateByUrl('/activity-list');
+    this.routeService.navigateByUrl('/activity-list');
   }
 
 }

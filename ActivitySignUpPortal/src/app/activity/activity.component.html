@@ -5,13 +5,32 @@ if the user has a cookie with th activityID this page will show the participant 
 the comment list is static from load time, but eventually a signalR type instant communication could be added to keep it a live discussion about the event
 -->
 <ng-template #thenBlock>
-    <div class="container">
-        <table>
-            <tr>
-                <td>Participant List goes here...</td>
-                <td>Comment List goes here...</td>
-            </tr>
-        </table>
+    <div class="row">
+        <div class="ActivityPageDescription">
+            <h2>{{userActivity.ActivityName}}</h2>
+            <br/>
+            On {{userActivity.ActivityDateTime | date:"yyyy-mm-dd"}}
+            <br/>
+            <div>{{userActivity.ActivityDescription}}</div>
+        </div>
+        <div class="col-sm-1 col-md-3 col-lg-4"></div>
+        <div class="col-sm-1 col-md-3 col-lg-4">
+
+            <div class="participantList">
+                <div *ngFor="let person of userActivity.ParticipantList">
+                    {{person.personName}} <br/>
+                </div>
+            </div>
+            <div class="commentList">
+                <div *ngFor="let comment of userActivity.CommentList">
+                    {{comment.commentDetail}} <br/>
+                    {{comment.commentContent}} <br/>
+                    <hr>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-1 col-md-3 col-lg-4"></div>
     </div>
 </ng-template>
 
@@ -22,7 +41,16 @@ on this page the sign up form will appear if the user does not have a cookie wit
 <ng-template #elseBlock>
     <div class="row">
         <div class="col-sm-1 col-md-3 col-lg-4"></div>
-        <div class="col-sm-1 col-md-3 col-lg-4">        
+        <div class="col-sm-1 col-md-3 col-lg-4">       
+            <div class="ActivityPageDescription">
+                <h2>{{ activity.ActivityName }}</h2>
+                <br/>
+                On {{activity.ActivityDateTime | date:"yyyy-mm-dd"}}
+                <br/>
+                <div>{{activity.ActivityDescription}}</div>
+            </div>     
+            <br/>
+            <h3>Sign up below to attend:</h3>        
             <form (ngSubmit)="onSubmit()" #newParticipant="ngForm">
                 <div class="form-group">
                     <label for="name">First Name</label>
