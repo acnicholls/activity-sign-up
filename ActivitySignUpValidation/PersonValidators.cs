@@ -5,9 +5,17 @@ using ActivitySignUp.Validation.Interfaces;
 
 namespace ActivitySignUp.Validation
 {
+    /// <summary>
+    /// this validator class checks the person model for violations of data requirements
+    /// </summary>
     public class PersonValidators : IPersonValidators
     {
 
+        /// <summary>
+        /// this method validates the person model on insert
+        /// </summary>
+        /// <param name="model">the model containing the details of the person</param>
+        /// <returns>a ValidationResults model</returns>
         public ValidationResults ValidateInsertModel(PersonInsertModel model)
         {
             var returnValue = new ValidationResults();
@@ -36,7 +44,11 @@ namespace ActivitySignUp.Validation
 
         }
 
-
+        /// <summary>
+        /// this method validates the email of the person to check
+        /// </summary>
+        /// <param name="email">the email of the person</param>
+        /// <returns>a ValidationResults model</returns>
         public ValidationResults ValidateCheckEmail(string email)
         {
             var returnValue = new ValidationResults();

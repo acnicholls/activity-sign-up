@@ -16,6 +16,10 @@ namespace ActivitySignUp.Repositories
     public class PersonRepository : BaseRepository, IPersonRepository
     {
 
+        /// <summary>
+        /// basic ctor
+        /// </summary>
+        /// <param name="ambientDbContextLocator">the ambient context locator</param>
         public PersonRepository(IAmbientDbContextLocator ambientDbContextLocator) : base(ambientDbContextLocator)
         { }
 
@@ -34,6 +38,12 @@ namespace ActivitySignUp.Repositories
             return parameters.Get<int>("NewId");
         }
 
+        /// <summary>
+        /// this method checks to see if the person with the passed email has already signed up for the activity with the passed Id value
+        /// </summary>
+        /// <param name="activityId">the Id value of the activity to check</param>
+        /// <param name="email">the email of the person to check</param>
+        /// <returns></returns>
         public async Task<bool> CheckPersonExistsInActivityAsync(int activityId, string email)
         {
             var parameters = new DynamicParameters();

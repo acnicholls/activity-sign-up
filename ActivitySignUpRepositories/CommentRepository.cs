@@ -14,6 +14,10 @@ namespace ActivitySignUp.Repositories
     public class CommentRepository : BaseRepository, ICommentRepository
     {
 
+        /// <summary>
+        /// basic ctor
+        /// </summary>
+        /// <param name="ambientDbContextLocator">context locator</param>
         public CommentRepository(IAmbientDbContextLocator ambientDbContextLocator) : base(ambientDbContextLocator)
         { }
 

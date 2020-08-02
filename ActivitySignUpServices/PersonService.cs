@@ -9,11 +9,20 @@ using System.Threading.Tasks;
 
 namespace ActivitySignUp.Services
 {
+    /// <summary>
+    /// this service class handles all methods of the person 
+    /// </summary>
     public class PersonService : BaseService, IPersonService
     {
         private IPersonRepository _repository;
         private IPersonValidators _validators;
 
+        /// <summary>
+        /// basic ctor
+        /// </summary>
+        /// <param name="factory">the ambient context factory</param>
+        /// <param name="repository">the person repository</param>
+        /// <param name="validators">the person validator</param>
         public PersonService(
             IAmbientDbContextFactory factory,
             IPersonRepository repository,
@@ -24,7 +33,11 @@ namespace ActivitySignUp.Services
             _validators = validators;
         }
 
-
+        /// <summary>
+        /// this method inserts a new person record into the Person db Table
+        /// </summary>
+        /// <param name="model">the model containing the details of the new person</param>
+        /// <returns>the Id value of the new person record</returns>
         public async Task<ServiceResult<int>> InsertPersonAsync(PersonInsertModel model)
         {
             try

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ActivitySignUp.Api.Controllers
 {
+    /// <summary>
+    /// this controller handles methods for participants
+    /// </summary>
     [Route("api/person")]
     [ApiController]
     public class PersonController : ControllerBase
@@ -15,6 +18,11 @@ namespace ActivitySignUp.Api.Controllers
         private IPersonService _service;
         private ILogger<PersonController> _logger;
 
+        /// <summary>
+        /// basic ctor
+        /// </summary>
+        /// <param name="service">the person service</param>
+        /// <param name="logger">the logger</param>
         public PersonController(
             IPersonService service,
             ILogger<PersonController> logger

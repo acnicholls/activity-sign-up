@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace ActivitySignUp.Api.Controllers
 {
+    /// <summary>
+    /// this controller handles all methods for comments
+    /// </summary>
     [Route("api/comment")]
     [ApiController]
     public class CommentController : ControllerBase
@@ -17,6 +20,11 @@ namespace ActivitySignUp.Api.Controllers
         private readonly ICommentService _service;
         private readonly ILogger<CommentController> _logger;
 
+        /// <summary>
+        /// basic ctor
+        /// </summary>
+        /// <param name="logger">the logger</param>
+        /// <param name="service">the comment service</param>
         public CommentController(
             ILogger<CommentController> logger,
             ICommentService service

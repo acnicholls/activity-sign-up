@@ -8,9 +8,15 @@ namespace ActivitySignUp.Services
     /// </summary>
     public abstract class BaseService
     {
-
+        /// <summary>
+        /// the ambient context factory
+        /// </summary>
         protected IAmbientDbContextFactory ContextFactory;
 
+        /// <summary>
+        /// the basic ctor
+        /// </summary>
+        /// <param name="factory">the ambient context factory</param>
         protected BaseService(
             IAmbientDbContextFactory factory
             )

@@ -3,6 +3,9 @@ using System.Reflection.Metadata;
 
 namespace ActivitySignUp.Constants
 {
+    /// <summary>
+    /// stores names of stored procedures
+    /// </summary>
     public class StoredProcedures
     {
         public const string ActivityExistsCheck = "dbo.ActivityExistsCheck";
@@ -10,7 +13,7 @@ namespace ActivitySignUp.Constants
         public const string ActivityGetView = "dbo.ActivityGetView";
         public const string ActivityGetList = "dbo.ActivityGetList";
         public const string ActivityInsert = "dbo.ActivityInsert";
-        public const string PersonExistsInActivityCheck = "dbo.PersonExistsInActivtyCheck";
+        public const string PersonExistsInActivityCheck = "dbo.PersonExistsInActivityCheck";
         public const string CommentInsert = "dbo.CommentInsert";
         public const string PersonInsert = "dbo.PersonInsert";
     }

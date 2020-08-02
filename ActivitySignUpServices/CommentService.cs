@@ -9,12 +9,21 @@ using System.Threading.Tasks;
 
 namespace ActivitySignUp.Services
 {
+    /// <summary>
+    /// this service class handles all methods for Comments
+    /// </summary>
     public class CommentService : BaseService, ICommentService
     {
 
         private ICommentRepository _repository;
         private ICommentValidators _validators;
 
+        /// <summary>
+        /// basic ctor
+        /// </summary>
+        /// <param name="factory">the ambient context factory</param>
+        /// <param name="repository">the comment repository</param>
+        /// <param name="validators">the comment validator</param>
         public CommentService(
             IAmbientDbContextFactory factory,
             ICommentRepository repository,
@@ -25,7 +34,11 @@ namespace ActivitySignUp.Services
             _validators = validators;
         }
 
-
+        /// <summary>
+        /// this method inserts a new comment record into the Comment db Table
+        /// </summary>
+        /// <param name="model">the comment model containing the details of the new comment</param>
+        /// <returns>the Id value of the new comment</returns>
         public async Task<ServiceResult<int>> InsertCommentAsync(CommentInsertModel model)
         {
             try
@@ -46,9 +59,6 @@ namespace ActivitySignUp.Services
             {
                 return new ServiceResult<int>(new ValidationError() { FieldName = "InsertCommentAsync", ErrorDetail = x.Message });
             }
-
         }
-
-
     }
 }

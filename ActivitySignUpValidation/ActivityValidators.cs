@@ -4,8 +4,16 @@ using ActivitySignUp.Validation.Interfaces;
 
 namespace ActivitySignUp.Validation
 {
+    /// <summary>
+    /// this validator class checks the activity model for violations of data requirements
+    /// </summary>
     public class ActivityValidators : IActivityValidators
     {
+        /// <summary>
+        /// this method validates the activity model on insert
+        /// </summary>
+        /// <param name="model">the model containing the details of the activity</param>
+        /// <returns>a ValidationResults model</returns>
         public ValidationResults ValidateInsertModel(ActivityInsertModel model)
         {
             var returnValue = new ValidationResults();

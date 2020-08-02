@@ -10,11 +10,20 @@ using System.Threading.Tasks;
 
 namespace ActivitySignUp.Services
 {
+    /// <summary>
+    /// this service class handles all methods for Activity
+    /// </summary>
     public class ActivityService : BaseService, IActivityService
     {
         private IActivityRepository _repository;
         private IActivityValidators _validators;
 
+        /// <summary>
+        /// basic ctor
+        /// </summary>
+        /// <param name="factory">the ambient context factory, used to create a db connection and context</param>
+        /// <param name="repository">the activity repository</param>
+        /// <param name="validators">the activity validator</param>
         public ActivityService(
             IAmbientDbContextFactory factory,
             IActivityRepository repository, 
@@ -25,7 +34,10 @@ namespace ActivitySignUp.Services
             _validators = validators;
         }
 
-       
+       /// <summary>
+       /// this method gets a list of activities
+       /// </summary>
+       /// <returns>a list of activityListModel records</returns>
         public async Task<ServiceResult<List<ActivityListModel>>> GetActivityListAsync()
         {
             try
@@ -41,6 +53,11 @@ namespace ActivitySignUp.Services
             }
         }
 
+        /// <summary>
+        /// this method returns a single activity
+        /// </summary>
+        /// <param name="activityId">the Id value of the activity to return</param>
+        /// <returns>a single ActivityModel record</returns>
         public async Task<ServiceResult<ActivityModel>> GetInitialActivityViewAsync(int activityId)
         {
             try
@@ -56,6 +73,11 @@ namespace ActivitySignUp.Services
             }
         }
 
+        /// <summary>
+        /// this method returns data regarding an activity that a person has already signed up for
+        /// </summary>
+        /// <param name="activityId">the Id of the activity to return</param>
+        /// <returns>a single ActivitySignedUpModel record</returns>
         public async Task<ServiceResult<ActivitySignedUpViewModel>> GetSignedUpActivityViewAsync(int activityId)
         {
             try
@@ -71,6 +93,11 @@ namespace ActivitySignUp.Services
             }
         }
 
+        /// <summary>
+        /// this method inserts a new activity into the Activity db Table
+        /// </summary>
+        /// <param name="model">the model containing the new activity data</param>
+        /// <returns>the Id of the inserted record</returns>
         public async Task<ServiceResult<int>> InsertActivityAsync(ActivityInsertModel model)
         {
             try
