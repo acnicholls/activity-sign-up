@@ -1,11 +1,69 @@
-<p>activity works!</p>
-
-<!--
-on this page the sign up form will appear if the user does not have a cookie with their request that contains the activity ID
--->
-
+<div *ngIf="userSignedUp; then thenBlock else elseBlock"></div>
 
 <!--
 if the user has a cookie with th activityID this page will show the participant list and a comment list
 the comment list is static from load time, but eventually a signalR type instant communication could be added to keep it a live discussion about the event
 -->
+<ng-template #thenBlock>
+    <div class="container">
+        <table>
+            <tr>
+                <td>Participant List goes here...</td>
+                <td>Comment List goes here...</td>
+            </tr>
+        </table>
+    </div>
+</ng-template>
+
+
+<!--
+on this page the sign up form will appear if the user does not have a cookie with their request that contains the activity ID
+-->
+<ng-template #elseBlock>
+    <div class="row">
+        <div class="col-sm-1 col-md-3 col-lg-4"></div>
+        <div class="col-sm-1 col-md-3 col-lg-4">        
+            <form (ngSubmit)="onSubmit()" #newParticipant="ngForm">
+                <div class="form-group">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" id="name"
+                        required
+                        [(ngModel)]="model.PersonFirstName" name="name" #name="ngModel" placeholder="enter your first name">
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                        First name is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="last">Last Name</label>
+                    <input type="text" class="form-control" id="last"
+                        required
+                        [(ngModel)]="model.PersonLastName" name="last" #last="ngModel" placeholder="enter your last name">
+                    <div [hidden]="last.valid || last.pristine" class="alert alert-danger">
+                        Last name is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email"
+                        required
+                        [(ngModel)]="model.PersonEmail" name="email" #email="ngModel" placeholder="enter your email">
+                    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                        Email is required
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!newParticipant.form.valid">Submit</button>
+                <button type="reset" class="btn btn-reset">Reset</button>
+            </form>   
+        </div>    
+        <div class="col-sm-1 col-md-3 col-lg-4"></div>        
+    </div>
+</ng-template>
+
+
+
+
+
+
+
+
+

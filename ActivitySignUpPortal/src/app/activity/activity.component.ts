@@ -1,8 +1,9 @@
+import { PersonInsertModel } from './../PesonInsertModel';
 import { ActivitySignedUpViewModel } from './../ActivitySignedUpViewModel';
 import { ActivityModel } from './../ActivityModel';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 // import { CookieService } from 'ngx-cookie';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataAccessService} from '../services/data-access.service';
 import { Subscription } from 'rxjs';
 
@@ -19,45 +20,70 @@ export class ActivityComponent implements OnInit {
 
   userActivity = new ActivitySignedUpViewModel();
 
-  private searchTerm = 'activityId';
+  model = new PersonInsertModel("", "","", 0);
 
+  userSignedUp: boolean = false;
 
+  submitted: boolean = false;  
+
+  routeId: number = 0;
 
   constructor(
     private dataAccessService: DataAccessService,
     // private cookieService: CookieService,
-    private routeService: ActivatedRoute
+    private routeService: ActivatedRoute,
+    private router: Router
     ) {     }
 
   ngOnInit(): void {
-      // parse the cookie content for the activity Id
-      const routeId  = this.routeService.snapshot.data[this.searchTerm];
+      // get the Id of the activity that we're looking for from the route.
+      this.routeService.paramMap.subscribe(params => {
+        this.routeId = Number(params.get('activityId'));
+      })
+
+      // check the user cookie to see if they have this.routeId
       // if it exists, show the participant list/ comment list
       // const cookieContent = this.cookieService.get(routeId.toString());
 
       // if (!(cookieContent == null) && cookieContent === 'true')
       if (false)
       {
-        this.dataAccessService.getSignedUpActivity(routeId).subscribe(
+        this.dataAccessService.getSignedUpActivity(this.routeId).subscribe(
             (returnValue) => {
                 this.userActivity = returnValue;
+                this.userSignedUp = true;
             },
             error => {
               console.log(error);
             }
           );
-        }
-        else{
-          // if it doesn't show the sign up view
-          this.dataAccessService.getActivity(routeId).subscribe(
-            (returnValue) => {
-                this.activity = returnValue;
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        }
+      }
+      else
+      {
+        // if it doesn't show the sign up view
+        this.dataAccessService.getActivity(this.routeId).subscribe(
+          (returnValue) => {
+              this.activity = returnValue;
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+  }
+
+  onSubmit(): void  {
+    this.submitted = true;
+    // here we save the participant data to the model and post it to the API
+    this.dataAccessService.createNewPerson(this.model).subscribe(
+      () => {
+        // TODO: save the activityId value to a cookie 
+        this.router.navigateByUrl('/activity/' + this.routeId);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
 }

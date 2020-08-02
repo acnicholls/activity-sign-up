@@ -5,8 +5,7 @@ import { ActivityListComponent } from './activity-list/activity-list.component';
 import { NewActivityComponent } from './activity/new/new.component';
 
 const routes: Routes = [
- // {path:'/', redirectTo:'activity-list'},
-  { path: 'activity', component: ActivityComponent},
+  { path: 'activity/:activityId', component: ActivityComponent},
   { path: 'activity-list', component: ActivityListComponent },
   { path: 'activity/new', component: NewActivityComponent }
 ];

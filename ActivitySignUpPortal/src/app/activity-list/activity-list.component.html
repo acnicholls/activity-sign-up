@@ -4,7 +4,7 @@
 
     <div class="row">
         <div *ngFor="let activity of activityList" class="activityCell col-sm-1 col-md-2, col-lg-2">
-            <a class="activityLink" href="/activity/{{activity.activityId}}" target="_self">
+            <a class="activityLink" [routerLink]="['/activity',activity.activityId]">
                 <table class="activityListTable">
                     <tr>
                         <td class="activityDate">

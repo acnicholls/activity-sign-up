@@ -20,7 +20,7 @@ import { NewActivityComponent } from './activity/new/new.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // FormsModule,
+    FormsModule,
     // CookieModule.forRoot()
   ],
   providers: [],

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {ActivityInsertModel} from '../../ActivityInsertModel'
-import { DataAccessService} from '../../services/data-access.service';
+import { ActivityInsertModel } from '../../ActivityInsertModel';
+import { DataAccessService } from '../../services/data-access.service';
 
 @Component({
   selector: 'app-new-activity-form',
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.sass'],
-  providers:[]
+  providers: []
 })
 export class NewActivityComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class NewActivityComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit(): void {
     this.submitted = true;
     this.dataAccessService.createNewActivity(this.model).subscribe(
       (data) => {
@@ -28,10 +28,7 @@ export class NewActivityComponent implements OnInit {
       },
       error => {
         console.log(error);
-
       }
     );
   }
-
-
 }
