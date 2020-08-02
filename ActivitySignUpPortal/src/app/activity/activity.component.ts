@@ -52,8 +52,7 @@ export class ActivityComponent implements OnInit {
     {
       this.dataAccessService.getSignedUpActivity(this.routeId).subscribe(
         (returnValue) => {
-          this.userActivity = returnValue;
-          
+          this.userActivity = new ActivitySignedUpViewModel().deserialize(returnValue);
         },
         error => {
           console.log(error);

@@ -98,7 +98,7 @@ namespace ActivitySignUp.Api.Controllers
         {
             try
             {
-                var srvResult = await _service.GetActivityListAsync();
+                var srvResult = await _service.GetInitialActivityViewAsync(activityId);
                 if (srvResult.IsSuccessful)
                 {
                     return new OkObjectResult(srvResult.Payload);
