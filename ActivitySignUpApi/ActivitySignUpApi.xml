@@ -43,12 +43,36 @@
             <param name="activityId"></param>
             <returns></returns>
         </member>
+        <member name="T:ActivitySignUp.Api.Controllers.CommentController">
+            <summary>
+            this controller handles all methods for comments
+            </summary>
+        </member>
+        <member name="M:ActivitySignUp.Api.Controllers.CommentController.#ctor(Microsoft.Extensions.Logging.ILogger{ActivitySignUp.Api.Controllers.CommentController},ActivitySignUp.Services.Interfaces.ICommentService)">
+            <summary>
+            basic ctor
+            </summary>
+            <param name="logger">the logger</param>
+            <param name="service">the comment service</param>
+        </member>
         <member name="M:ActivitySignUp.Api.Controllers.CommentController.InsertCommentAsync(ActivitySignUp.Models.Comment.CommentInsertModel)">
             <summary>
             this method will insert a new comment
             </summary>
             <param name="comment">the model containing the values of the new record</param>
             <returns>teh newly inserted Id</returns>
+        </member>
+        <member name="T:ActivitySignUp.Api.Controllers.PersonController">
+            <summary>
+            this controller handles methods for participants
+            </summary>
+        </member>
+        <member name="M:ActivitySignUp.Api.Controllers.PersonController.#ctor(ActivitySignUp.Services.Interfaces.IPersonService,Microsoft.Extensions.Logging.ILogger{ActivitySignUp.Api.Controllers.PersonController})">
+            <summary>
+            basic ctor
+            </summary>
+            <param name="service">the person service</param>
+            <param name="logger">the logger</param>
         </member>
         <member name="M:ActivitySignUp.Api.Controllers.PersonController.InsertPersonAsync(ActivitySignUp.Models.Person.PersonInsertModel)">
             <summary>
