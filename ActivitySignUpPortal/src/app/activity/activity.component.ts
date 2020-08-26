@@ -21,7 +21,7 @@ export class ActivityComponent implements OnInit {
 
   userActivity = new ActivitySignedUpViewModel();
 
-  model = new PersonInsertModel("", "","", 0);
+  model = new PersonInsertModel("","","", 0);
 
   userSignedUp: boolean = false;
 
@@ -79,7 +79,7 @@ export class ActivityComponent implements OnInit {
     // here we save the participant data to the model and post it to the API, then if successful, reload the component
     this.dataAccessService.createNewPerson(this.model).subscribe(
       () => {
-        this.cookieService.set(this.cookieName, 'true');
+        this.cookieService.set(this.cookieName, 'true', 365);
         this.ngOnInit();
       },
       (error) => {

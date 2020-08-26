@@ -287,3 +287,20 @@
       visibility: hidden;
     }
   }
+
+  .spaceRow{
+    height: 50px;
+  }
+
+  .ActivityPageDescription{
+    /*background-color: #2e2929;*/
+    color: #2b2b21;
+  }
+
+  .ActivityParticipantList{
+    float: left;
+  }
+
+  .ActivityCommentList{
+    float: right;
+  }
