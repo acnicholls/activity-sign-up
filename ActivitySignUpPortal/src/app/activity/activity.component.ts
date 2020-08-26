@@ -1,3 +1,4 @@
+import { CommentInsertModel } from './../CommentInsertModel';
 import { PersonInsertModel } from './../PesonInsertModel';
 import { ActivitySignedUpViewModel } from './../ActivitySignedUpViewModel';
 import { ActivityModel } from './../ActivityModel';
@@ -31,6 +32,10 @@ export class ActivityComponent implements OnInit {
 
   cookieName: string = '';
 
+  cookieValue: string = '';
+
+  commentModel = new CommentInsertModel(0,0,"");
+
   constructor(
     private dataAccessService: DataAccessService,
     private routeService: ActivatedRoute,
@@ -46,7 +51,9 @@ export class ActivityComponent implements OnInit {
     // check the user cookie to see if they have this.routeId
     // if it exists, show the participant list/ comment list
     this.cookieName = `${Globals.COOKIE_NAME}${this.routeId}`;
-    this.userSignedUp = (this.cookieService.get(this.cookieName) === 'true');
+    this.cookieValue = this.cookieService.get(this.cookieName);
+    
+    this.userSignedUp = this.cookieValue == '' ? false : true;
 
     if (this.userSignedUp)
     {
@@ -78,12 +85,21 @@ export class ActivityComponent implements OnInit {
     this.submitted = true;
     // here we save the participant data to the model and post it to the API, then if successful, reload the component
     this.dataAccessService.createNewPerson(this.model).subscribe(
-      () => {
-        this.cookieService.set(this.cookieName, 'true', 365);
+      (userId) => {
+        this.cookieService.set(this.cookieName, userId.toString(), 365);
         this.ngOnInit();
       },
       (error) => {
         console.log(error);
+      }
+    )
+  }
+
+  onCommentSubmit(): void {
+    this.commentModel.CommentPersonId = parseInt(this.cookieService.get(this.cookieName)) 
+    this.dataAccessService.createNewComment(this.commentModel).subscribe(
+      () => {
+
       }
     )
   }

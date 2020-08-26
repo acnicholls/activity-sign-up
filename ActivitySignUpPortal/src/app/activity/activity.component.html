@@ -1,7 +1,7 @@
 <div *ngIf="userSignedUp; then thenBlock else elseBlock"></div>
 
 <!--
-if the user has a cookie with th activityID this page will show the participant list and a comment list
+if the user has a cookie with the activityID this page will show the participant list and a comment list
 the comment list is static from load time, but eventually a signalR type instant communication could be added to keep it a live discussion about the event
 -->
 <ng-template #thenBlock>
@@ -22,12 +22,22 @@ the comment list is static from load time, but eventually a signalR type instant
                 {{person.personName}} <br/>
             </div>
         </div>
-        <div class="ActivityCommentList col-sm-1 col-md-3 col-lg-4">
+        <div class="ActivityCommentList col-sm-2 col-md-4 col-lg-6">
             <h3>Comments</h3>
             <div *ngFor="let comment of userActivity.commentList">
                 {{comment.commentDetail}} <br/>
                 {{comment.commentContent}} <br/>
                 <hr>
+            </div>
+            <div class="commentForm col-12">
+                <form (ngSubmit)="onCommentSubmit()" #newComment="ngForm">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="comment"
+                        required
+                        [(ngModel)]="commentModel.CommentContent" name="commentContent" #commentContent="ngModel" placeholder="enter your comments here">
+                        <button type="submit" class="btn btn-success" [disabled]="!newComment.form.valid">Submit</button>                    
+                    </div>
+                </form>
             </div>
         </div>
     </div>

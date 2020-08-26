@@ -303,4 +303,10 @@
 
   .ActivityCommentList{
     float: right;
+    height: 100%;
+  }
+
+  .commentForm{
+    position: fixed;
+    bottom: 0;
   }
