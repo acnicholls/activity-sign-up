@@ -23,7 +23,7 @@
     "@syncfusion/ej2-angular-calendars": "^18.2.44",
     "ajax": "0.0.4",
     "bootstrap": "^4.5.0",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "jquery": "^3.5.1",
     "ngx-cookie-service": "^10.0.1",
     "nodemon": "^2.0.4",
