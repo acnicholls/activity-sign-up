@@ -6,7 +6,7 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     ports:
-      - 80:80
+      - 8001:80
       - 4200:4200
   api:
     build:
@@ -15,7 +15,7 @@ services:
     links:
       - db
     ports:
-      - 80:80
+      - 8080:80
       - 52366:52366
   db:
     build:

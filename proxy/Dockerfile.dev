@@ -1,5 +1,5 @@
 # use NGINX as a reverse proxy
-FROM nginx:16.0-alpine
+FROM nginx:1.16.0-alpine
 
 # copy our configuration file
 COPY ./nginx.prod.conf /etc/nginx/conf.d/nginx.conf

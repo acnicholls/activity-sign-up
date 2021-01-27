@@ -1,2 +1,1 @@
-docker-compose -f docker-compose.dev.yml --verbose build 
-docker-compose -f docker-compose.dev.yml --verbose up
+docker-compose -f docker-compose.dev.yml up --build 

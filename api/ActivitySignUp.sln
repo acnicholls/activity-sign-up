@@ -11,13 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpServices", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpValidation", "ActivitySignUpValidation\ActivitySignUpValidation.csproj", "{66BDBB91-552B-4941-8E1C-FF31F0B439DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpRespositoryTests", "ActivitySignUpRespositoryTests\ActivitySignUpRespositoryTests.csproj", "{06B6F79F-E802-4C6B-9BEF-20A575F1C019}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ActivitySignUpDatabase", "ActivitySignUpDatabase\ActivitySignUpDatabase.sqlproj", "{3E039112-422E-450F-8E0F-B7591F8C16D3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpModels", "ActivitySignUpModels\ActivitySignUpModels.csproj", "{64F5E8EC-169B-46E4-8204-614134DEC798}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpConstants", "ActivitySignUpConstants\ActivitySignUpConstants.csproj", "{CB9CF937-F9DD-4535-BE3C-FE853180A912}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpRepositoryTests", "ActivitySignUpRepositoryTests\ActivitySignUpRepositoryTests.csproj", "{68987856-272E-4DC9-A563-E2C0361058A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,16 +39,6 @@ Global
 		{66BDBB91-552B-4941-8E1C-FF31F0B439DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66BDBB91-552B-4941-8E1C-FF31F0B439DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66BDBB91-552B-4941-8E1C-FF31F0B439DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06B6F79F-E802-4C6B-9BEF-20A575F1C019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06B6F79F-E802-4C6B-9BEF-20A575F1C019}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06B6F79F-E802-4C6B-9BEF-20A575F1C019}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06B6F79F-E802-4C6B-9BEF-20A575F1C019}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E039112-422E-450F-8E0F-B7591F8C16D3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{64F5E8EC-169B-46E4-8204-614134DEC798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64F5E8EC-169B-46E4-8204-614134DEC798}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64F5E8EC-169B-46E4-8204-614134DEC798}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,6 +47,10 @@ Global
 		{CB9CF937-F9DD-4535-BE3C-FE853180A912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB9CF937-F9DD-4535-BE3C-FE853180A912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB9CF937-F9DD-4535-BE3C-FE853180A912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68987856-272E-4DC9-A563-E2C0361058A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68987856-272E-4DC9-A563-E2C0361058A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68987856-272E-4DC9-A563-E2C0361058A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68987856-272E-4DC9-A563-E2C0361058A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
