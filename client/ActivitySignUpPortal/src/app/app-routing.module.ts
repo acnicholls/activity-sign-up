@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ActivityComponent } from './activity/activity.component';
-import { ActivityListComponent } from './activity-list/activity-list.component';
-import { NewActivityComponent } from './activity/new/new.component';
+import { ActivityComponent } from './pages/activity/activity.component';
+import { ActivityListComponent } from './pages/activity-list/activity-list.component';
+import { NewActivityComponent } from './pages/activity/new/new.component';
 
 const routes: Routes = [
   { path: 'activity/:activityId', component: ActivityComponent},

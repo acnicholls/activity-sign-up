@@ -1,0 +1,9 @@
+# use NGINX as a reverse proxy
+FROM nginx:16.0-alpine
+
+# copy our configuration file
+COPY ./nginx.prod.conf /etc/nginx/conf.d/nginx.conf
+
+# copy our includes file
+COPY ./includes.conf /etc/nginx/conf.d/includes.conf
+

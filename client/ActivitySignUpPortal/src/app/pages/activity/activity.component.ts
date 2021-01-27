@@ -1,13 +1,13 @@
-import { CommentInsertModel } from './../CommentInsertModel';
-import { PersonInsertModel } from './../PesonInsertModel';
-import { ActivitySignedUpViewModel } from './../ActivitySignedUpViewModel';
-import { ActivityModel } from './../ActivityModel';
+import { CommentInsertModel } from '../../models/comment/CommentInsertModel';
+import { PersonInsertModel } from '../../models/person/PesonInsertModel';
+import { ActivitySignedUpViewModel } from '../../models/activity/ActivitySignedUpViewModel';
+import { ActivityModel } from '../../models/activity/ActivityModel';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute } from '@angular/router';
-import { DataAccessService} from '../services/data-access.service';
+import { DataAccessService} from '../../services/data-access.service';
 import { Subscription, Observable } from 'rxjs';
-import { Globals } from '../globals';
+import { Globals } from '../../globals';
 
 @Component({
   selector: 'app-activity',

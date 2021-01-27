@@ -5,9 +5,9 @@ import { FormsModule} from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ActivityListComponent } from './activity-list/activity-list.component';
-import { ActivityComponent } from './activity/activity.component';
-import { NewActivityComponent } from './activity/new/new.component';
+import { ActivityListComponent } from './pages/activity-list/activity-list.component';
+import { ActivityComponent } from './pages/activity/activity.component';
+import { NewActivityComponent } from './pages/activity/new/new.component';
 
 @NgModule({
   declarations: [

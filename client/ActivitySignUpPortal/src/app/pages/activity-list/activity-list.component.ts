@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivityListModel } from '../ActivityListModel';
-import { DataAccessService } from '../services/data-access.service';
+import { ActivityListModel } from '../../models/activity/ActivityListModel';
+import { DataAccessService } from '../../services/data-access.service';
 
 @Component({
   selector: 'app-activity-list',

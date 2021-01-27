@@ -9,4 +9,4 @@
 
 GO
 
-CREATE UNIQUE INDEX [IDX_Person_Email_Activity] ON [dbo].[Person] ( [PersonActivityId] asc, [PersonEmail] asc)
+create unique index IDX_Person_Email_Activity on Person (PersonEmail, PersonActivityId);

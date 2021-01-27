@@ -1,6 +1,6 @@
-import { Deserializable } from './deserializable.model';
-import { PersonListModel } from "./PersonListModel";
-import { CommentListModel } from "./CommentListModel";
+import { Deserializable } from '../deserializable.model';
+import { PersonListModel } from "../person/PersonListModel";
+import { CommentListModel } from "../comment/CommentListModel";
 
 export class ActivitySignedUpViewModel implements Deserializable {
      activityId: number | undefined;

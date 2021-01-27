@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Comment]
+CREATE TABLE [dbo].[Comment]
 (
 	CommentId int primary key clustered identity,
 	CommentPersonId int not null constraint FK_Comment_Person foreign key references Person (PersonId),
@@ -11,4 +11,4 @@ GO
 CREATE INDEX [IDX_Comment_Activity_CommentDate] ON [dbo].[Comment] ([CommentActivityId], [CommentDateTime] DESC)
 
 GO
-
+CREATE INDEX [IDX_Comment_Activity] on [dbo].[Comment] (CommentActivityId ASC);

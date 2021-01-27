@@ -5,27 +5,6 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpApi", "ActivitySignUpApi\ActivitySignUpApi.csproj", "{04189064-E7A0-43AC-B5A3-53ADCF3BC6A9}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ActivitySignUpPortal", "ActivitySignUpPortal\", "{ECF18176-AAC0-4B45-8D9A-FF82B7D758E6}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_52900"
-		Debug.AspNetCompiler.PhysicalPath = "ActivitySignUpPortal\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52900\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_52900"
-		Release.AspNetCompiler.PhysicalPath = "ActivitySignUpPortal\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52900\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "52900"
-		SlnRelativePath = "ActivitySignUpPortal\"
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpRepositories", "ActivitySignUpRepositories\ActivitySignUpRepositories.csproj", "{07FB5874-4E4B-4927-A398-A4B4BBC1AFD7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivitySignUpServices", "ActivitySignUpServices\ActivitySignUpServices.csproj", "{4471685F-CA0E-47AF-8988-BA01B84BB15E}"
@@ -50,10 +29,6 @@ Global
 		{04189064-E7A0-43AC-B5A3-53ADCF3BC6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04189064-E7A0-43AC-B5A3-53ADCF3BC6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04189064-E7A0-43AC-B5A3-53ADCF3BC6A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ECF18176-AAC0-4B45-8D9A-FF82B7D758E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECF18176-AAC0-4B45-8D9A-FF82B7D758E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECF18176-AAC0-4B45-8D9A-FF82B7D758E6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECF18176-AAC0-4B45-8D9A-FF82B7D758E6}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{07FB5874-4E4B-4927-A398-A4B4BBC1AFD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07FB5874-4E4B-4927-A398-A4B4BBC1AFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07FB5874-4E4B-4927-A398-A4B4BBC1AFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU

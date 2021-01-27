@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ActivityInsertModel } from '../../ActivityInsertModel';
-import { DataAccessService } from '../../services/data-access.service';
+import { ActivityInsertModel } from '../../../models/activity/ActivityInsertModel';
+import { DataAccessService } from '../../../services/data-access.service';
 
 @Component({
   selector: 'app-new-activity-form',
