@@ -50,10 +50,11 @@ namespace ActivitySignUpApi
         {
             services.AddCors(options =>
             {
+                var clientUrl = Configuration.GetSection("ClientUrl").Value;
                 options.AddPolicy(name: _myCorsPolicyName,
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost")
+                        builder.WithOrigins(clientUrl)
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                     });

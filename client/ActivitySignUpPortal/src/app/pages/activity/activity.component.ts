@@ -63,7 +63,7 @@ export class ActivityComponent implements OnInit {
           this.commentModel.CommentActivityId = this.routeId;
           this.commentModel.CommentPersonId = parseInt(this.cookieValue);
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );
@@ -76,7 +76,7 @@ export class ActivityComponent implements OnInit {
         (returnValue) => {
           this.activity = returnValue;
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );
@@ -101,6 +101,7 @@ export class ActivityComponent implements OnInit {
     this.commentModel.CommentPersonId = parseInt(this.cookieService.get(this.cookieName)) 
     this.dataAccessService.createNewComment(this.commentModel).subscribe(
       () => {
+        this.commentModel.CommentContent = '';
         this.ngOnInit();
       }
     )
