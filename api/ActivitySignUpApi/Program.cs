@@ -29,7 +29,9 @@ namespace ActivitySignUpApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    config.AddJsonFile("appsettings.json");
+                    var env = hostingContext.HostingEnvironment;
+                    config.AddJsonFile("appsettings.json", false, true);
+                    config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true);
                     config.AddUserSecrets("c12b8bf5-e1b6-42d1-a0dc-23245c6d6ce6");
                 })
                 .ConfigureWebHostDefaults(webBuilder =>

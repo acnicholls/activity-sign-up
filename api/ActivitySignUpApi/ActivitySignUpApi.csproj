@@ -11,6 +11,10 @@
     <OutputPath>A:\source\githubRepos\activity-sign-up\api\ActivitySignUpApi\bin\Debug\netcoreapp3.1</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>ActivitySignUpApi\ActivitySignUpApi.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="NLog.config" />
   </ItemGroup>

@@ -53,7 +53,7 @@ namespace ActivitySignUpApi
                 options.AddPolicy(name: _myCorsPolicyName,
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200")
+                        builder.WithOrigins("http://localhost")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                     });
@@ -104,13 +104,14 @@ namespace ActivitySignUpApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Activity Sign Up API v1");
+                    c.RoutePrefix = string.Empty;
                 }
             );
 

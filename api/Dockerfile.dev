@@ -60,6 +60,12 @@ COPY ./ActivitySignUpApi/Startup.cs ./ActivitySignUpApi/
 COPY ./ActivitySignUpApi/appsettings.json ./ActivitySignUpApi/appsettings.json
 COPY ./ActivitySignUpApi/Controllers ./ActivitySignUpApi/Controllers/
 
+# xml file for Swagger
+COPY ./ActivitySignUpApi/ActivitySignUpApi.xml /app/ActivitySignUpApi.xml
+
+# json file for ConnectionStrings
+COPY ./appsettings.Production.json ./ActivitySignUpApi/
+
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:3.1

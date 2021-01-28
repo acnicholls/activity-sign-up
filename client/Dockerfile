@@ -1,4 +1,4 @@
-FROM node:12.18 as build
+FROM node:12.18.1 as build
 
 # install chrome for tests
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -22,7 +22,7 @@ RUN ng test --watch=false
 RUN ng e2e --port 4202
 
 # generate build
-RUN ng build --output-path=dist
+RUN ng build --output-path=dist --configuration=production
 
 
 ###  PRODUCTION IMAGE
