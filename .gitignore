@@ -350,4 +350,5 @@ MigrationBackup/
 .ionide/
 
 # production settings files
-aspsettings.Production.json
+appsettings.Production.json
+

@@ -7,19 +7,19 @@ RUN apt-get update && apt-get install -yq google-chrome-stable
 
 WORKDIR /app
 
-ENV PATH=/app/node_modules/.bin:$PATH
-
-# install npm packges
-COPY ./ActivitySignUpPortal/src/app/package.json /app/package.json
-RUN npm install
-RUN npm install -g @angular/cli@7.3.9
+ENV PATH /app/node_modules/.bin:$PATH
 
 # copy the application files
-COPY ./ActivitySignUpPortal/src/app/ /app
+COPY ./ActivitySignUpPortal .
+
+# install npm packges
+RUN npm install
+RUN npm install -g @angular/cli@10.0.4
+
 
 # run the tests
-RUN ng test --watch=false
-RUN ng e2e --port 4202
+# RUN ng test --watch=false
+# RUN ng e2e --port 4202
 
 # generate build
 RUN ng build --output-path=dist --configuration=production
@@ -28,10 +28,12 @@ RUN ng build --output-path=dist --configuration=production
 ###  PRODUCTION IMAGE
 FROM nginx:1.16.0-alpine
 
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
 # copy build output
 COPY --from=build /app/dist /usr/share/nginx/html
 
 #expose HTTP port
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon 0ff;"]
+CMD ["nginx", "-g", "daemon off;"]
