@@ -13,5 +13,11 @@
     {
       "path": "./tsconfig.spec.json"
     }
-]
+],
+"compilerOptions": {
+  "target": "es5",
+  "modeule": "commonjs",
+  "outDir": "out",
+  "sourceMap": true,
+}
 }

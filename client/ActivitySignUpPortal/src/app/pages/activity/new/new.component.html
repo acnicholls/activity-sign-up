@@ -42,9 +42,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="loc">Activity Image Location</label>
-                    <input type="text" class="form-control" id="loc"
-                        [(ngModel)]="model.ActivityImage" name="loc" #loc="ngModel" placeholder="enter the image name">
+                    <label for="file">Activity Image</label>
+                    <input type="file" class="form-control" id="file"
+                        [(ngModel)]="model.ActivityImage" name="file" #file="ngModel" placeholder="select your image"
+                        (change)="onFileChange($event)">
+                    <div [hidden]="file.valid || file.pristine" class="alert alert-danger">
+                        Image is required
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-success" [disabled]="!newActivity.form.valid">Submit</button>
                 <button type="reset" class="btn btn-reset">Reset</button>

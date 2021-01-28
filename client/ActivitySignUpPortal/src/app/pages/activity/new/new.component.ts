@@ -20,6 +20,19 @@ export class NewActivityComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onFileChange(event: any) {
+    const reader = new FileReader();
+
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.model.ActivityImage = reader.result as string;
+      };
+    }
+  }
+
   onSubmit(): void {
     this.submitted = true;
     this.dataAccessService.createNewActivity(this.model).subscribe(
