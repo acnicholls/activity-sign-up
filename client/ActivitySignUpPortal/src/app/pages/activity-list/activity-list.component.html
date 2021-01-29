@@ -1,28 +1,20 @@
-<div class="container">
-    
-    <h1>Activity List</h1>
 
-    <div class="row">
-        <div *ngFor="let activity of activityList" class="activityCell col-sm-1 col-md-2, col-lg-2">
-            <a class="activityLink" [routerLink]="['/activity',activity.activityId]">
-                <table class="activityListTable">
-                    <tr>
-                        <td class="activityDate">
-                            {{activity.activityDateTime | date:'yyyy-mm-dd' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background-image:url('{{activity.activityImage}}');">
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="activityName">
-                            {{activity.activityName}}
-                        </td>
-                    </tr>
-                </table>
-            </a>
-        </div>
-    </div>
-</div>
+<h1>Activity List</h1>
+
+<nb-list>
+    <nb-list-item *ngFor="let activity of activityList">
+        <a [routerLink]="['/activity',activity.activityId]">
+            <nb-card>
+                <nb-card-header>
+                    {{activity.activityName}}                        
+                </nb-card-header>
+                <nb-card-body>
+                    <img src="{{activity.activityImage}}">
+                </nb-card-body>
+                <nb-card-footer>
+                    {{activity.activityDateTime | date:'yyyy-mm-dd' }}                        
+                </nb-card-footer>
+            </nb-card>
+        </a>
+    </nb-list-item>
+</nb-list>

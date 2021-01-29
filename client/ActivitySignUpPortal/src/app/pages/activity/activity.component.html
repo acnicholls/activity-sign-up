@@ -1,10 +1,11 @@
 <div *ngIf="userSignedUp; then thenBlock else elseBlock"></div>
 
 <!--
-if the user has a cookie with the activityID this page will show the participant list and a comment list
-the comment list is static from load time, but eventually a signalR type instant communication could be added to keep it a live discussion about the event
+    if the user has a cookie with the activityID this page will show the participant list and a comment list
+    the comment list is static from load time, but eventually a signalR type instant communication could be added to keep it a live discussion about the event
 -->
 <ng-template #thenBlock>
+    <nb-layout>
     <div class="container">
         <div class="row">
             <div class="ActivityPageDescription col-lg-12">
@@ -41,6 +42,7 @@ the comment list is static from load time, but eventually a signalR type instant
             </div>
         </div>
     </div>
+    </nb-layout>
 </ng-template>
 
 
@@ -48,6 +50,7 @@ the comment list is static from load time, but eventually a signalR type instant
 on this page the sign up form will appear if the user does not have a cookie for this activity ID with their request
 -->
 <ng-template #elseBlock>
+    <nb-layout>
     <div class="row">
         <div class="col-1"></div>
         <div class="ActivityPageDescription">
@@ -98,8 +101,8 @@ on this page the sign up form will appear if the user does not have a cookie for
         </div>    
         <div class="col-sm-1 col-md-3 col-lg-4"></div>        
     </div>
+    </nb-layout>
 </ng-template>
-
 
 
 

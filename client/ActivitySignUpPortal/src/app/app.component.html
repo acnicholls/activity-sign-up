@@ -1,23 +1,11 @@
-
-
-
-
-
-<div class="content" role="main">
-
-  <div class="card highlight-card card-small">
-
-
-    <span>Welcome to the {{ title }}</span>
-
-
-  </div>
-
-
-</div>
-
-
-
-
-
-<router-outlet></router-outlet>
+<nb-layout>
+  <nb-layout-header fixed>
+    <div>
+      Welcome to the {{title}}
+    </div>
+  </nb-layout-header>
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+  <nb-layout-footer>&copy;2021 - Anthony Nicholls</nb-layout-footer>
+</nb-layout>

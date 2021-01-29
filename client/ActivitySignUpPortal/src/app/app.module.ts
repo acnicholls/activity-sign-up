@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ActivityListComponent } from './pages/activity-list/activity-list.component';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { NewActivityComponent } from './pages/activity/new/new.component';
+import { NbThemeModule, NbLayoutModule, NbCardModule, NbListModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,11 @@ import { NewActivityComponent } from './pages/activity/new/new.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NbThemeModule.forRoot({name: 'dark' }),
+    NbLayoutModule,
+    NbCardModule,
+    NbListModule
   ],
   providers: [ CookieService ],
   bootstrap: [ AppComponent ]
