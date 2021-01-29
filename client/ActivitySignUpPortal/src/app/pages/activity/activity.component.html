@@ -5,25 +5,24 @@
     the comment list is static from load time, but eventually a signalR type instant communication could be added to keep it a live discussion about the event
 -->
 <ng-template #thenBlock>
-    <nb-layout>
     <div class="container">
         <div class="row">
-            <div class="ActivityPageDescription col-lg-12">
+            <div class="col-lg-12">
                 <h1>{{userActivity.activityName}}</h1>
-                <br/>
                 On {{userActivity.activityDateTime | date:"yyyy-MM-dd"}}
-                <br/>
+                <hr/>
                 <div>{{userActivity.activityDescription}}</div>
             </div>
         </div>
         <div class="row spaceRow"></div>
-        <div class="ActivityParticipantList col-sm-1 col-md-3 col-lg-4">
+        <div class="ActivityParticipantList col-sm-4 col-md-4 col-lg-4">
             <h3>Participants</h3>
             <div *ngFor="let person of userActivity.participantList">
                 {{person.personName}} <br/>
             </div>
         </div>
-        <div class="ActivityCommentList col-sm-2 col-md-4 col-lg-6">
+        <div class="col-2"></div>
+        <div class="ActivityCommentList col-sm-6 col-md-6 col-lg-6">
             <h3>Comments</h3>
             <div *ngFor="let comment of userActivity.commentList">
                 {{comment.commentDetail}} <br/>
@@ -33,16 +32,15 @@
             <div class="commentForm col-12">
                 <form (ngSubmit)="onCommentSubmit()" #newComment="ngForm">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="comment"
+                        <input nbInput type="text" class="form-control" id="comment"
                         required
                         [(ngModel)]="commentModel.CommentContent" name="commentContent" #commentContent="ngModel" placeholder="enter your comments here">
-                        <button type="submit" class="btn btn-success" [disabled]="!newComment.form.valid">Submit</button>                    
+                        <button nbButton type="submit" class="btn btn-success" [disabled]="!newComment.form.valid">Submit</button>                    
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    </nb-layout>
 </ng-template>
 
 
@@ -50,10 +48,9 @@
 on this page the sign up form will appear if the user does not have a cookie for this activity ID with their request
 -->
 <ng-template #elseBlock>
-    <nb-layout>
     <div class="row">
         <div class="col-1"></div>
-        <div class="ActivityPageDescription">
+        <div>
             <h1>{{ activity.activityName }}</h1>
             <br/>
             On {{activity.activityDateTime | date:"yyyy-MM-dd"}}
@@ -63,14 +60,13 @@ on this page the sign up form will appear if the user does not have a cookie for
         <div class="col-1"></div>
     </div>
     <div class="row spaceRow"></div>
-    <div class="row">
-        <div class="col-sm-1 col-md-3 col-lg-4"></div>
-        <div class="col-sm-1 col-md-3 col-lg-4">       
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6 col-md-6 col-lg-6">       
             <h4>Sign up below to attend:</h4>        
             <form (ngSubmit)="onSubmit()" #newParticipant="ngForm">
                 <div class="form-group">
                     <label for="name">First Name</label>
-                    <input type="text" class="form-control" id="name"
+                    <input nbInput type="text" class="form-control" id="name"
                         required
                         [(ngModel)]="model.PersonFirstName" name="name" #name="ngModel" placeholder="enter your first name">
                     <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
@@ -79,7 +75,7 @@ on this page the sign up form will appear if the user does not have a cookie for
                 </div>
                 <div class="form-group">
                     <label for="last">Last Name</label>
-                    <input type="text" class="form-control" id="last"
+                    <input nbInput type="text" class="form-control" id="last"
                         required
                         [(ngModel)]="model.PersonLastName" name="last" #last="ngModel" placeholder="enter your last name">
                     <div [hidden]="last.valid || last.pristine" class="alert alert-danger">
@@ -88,20 +84,18 @@ on this page the sign up form will appear if the user does not have a cookie for
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email"
+                    <input nbInput type="email" class="form-control" id="email"
                         required
                         [(ngModel)]="model.PersonEmail" name="email" #email="ngModel" placeholder="enter your email">
                     <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                         Email is required
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success" [disabled]="!newParticipant.form.valid">Submit</button>
-                <button type="reset" class="btn btn-reset">Reset</button>
+                <button nbButton type="submit" class="btn btn-success" [disabled]="!newParticipant.form.valid">Submit</button>
+                <button nbButton type="reset" class="btn btn-reset">Reset</button>
             </form>   
         </div>    
-        <div class="col-sm-1 col-md-3 col-lg-4"></div>        
     </div>
-    </nb-layout>
 </ng-template>
 
 

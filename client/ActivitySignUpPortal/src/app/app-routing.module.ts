@@ -5,9 +5,9 @@ import { ActivityListComponent } from './pages/activity-list/activity-list.compo
 import { NewActivityComponent } from './pages/activity/new/new.component';
 
 const routes: Routes = [
+  { path: 'activity/new', component: NewActivityComponent },
   { path: 'activity/:activityId', component: ActivityComponent },
   { path: 'activity-list', component: ActivityListComponent },
-  { path: 'activity/new', component: NewActivityComponent }
 ];
 
 @NgModule({

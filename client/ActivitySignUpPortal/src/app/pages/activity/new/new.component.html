@@ -1,12 +1,7 @@
-<nb-layout>
-    <div class="row">
-        <div class="col-sm-1 col-md-3 col-lg-4"></div>
-        <div class="col-sm-1 col-md-3 col-lg-4">
-            <h1>New Activity</h1>
-            <hr>
-            Enter the details of your new activity below
-        </div>
-        <div class="col-sm-1 col-md-3 col-lg-4"></div>
+    <div class="row justify-content-md-center">
+        <h1>New Activity</h1>
+        <hr>
+        Enter the details of your new activity below
     </div>
     <br>
     <br>
@@ -16,7 +11,7 @@
             <form (ngSubmit)="onSubmit()" #newActivity="ngForm">
                 <div class="form-group">
                     <label for="name">Activity Name</label>
-                    <input type="text" class="form-control" id="name"
+                    <input nbInput type="text" class="form-control" id="name"
                         required
                         [(ngModel)]="model.ActivityName" name="name" #name="ngModel" placeholder="enter the activity name">
                     <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
@@ -25,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="desc">Activity Description</label>
-                    <input type="text" class="form-control" id="desc"
+                    <input nbInput type="text" class="form-control" id="desc"
                         required
                         [(ngModel)]="model.ActivityDescription" name="desc" #desc="ngModel" placeholder="enter the description of your activity">
                     <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger">
@@ -34,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <label for="date">Activity Date</label>
-                    <input type="date" class="form-control" id="date"
+                    <input nbInput type="date" class="form-control" id="date"
                         required
                         [(ngModel)]="model.ActivityDateTime" name="date" #date="ngModel" placeholder="yyyy-mm-dd">
                     <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
@@ -43,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <label for="file">Activity Image</label>
-                    <input type="file" class="form-control" id="file"
+                    <input nbInput type="file" class="form-control" id="file"
                         [(ngModel)]="model.ActivityImage" name="file" #file="ngModel" placeholder="select your image"
                         (change)="onFileChange($event)">
                     <div [hidden]="file.valid || file.pristine" class="alert alert-danger">
@@ -56,4 +51,3 @@
         </div>
         <div class="col-sm-1 col-md-3 col-lg-4"></div>    
     </div>
-</nb-layout>

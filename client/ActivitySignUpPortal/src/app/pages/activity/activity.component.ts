@@ -1,13 +1,13 @@
+import { ActivityPersonModel } from './../../models/activity/ActivityPersonModel';
 import { CommentInsertModel } from '../../models/comment/CommentInsertModel';
 import { PersonInsertModel } from '../../models/person/PesonInsertModel';
 import { ActivitySignedUpViewModel } from '../../models/activity/ActivitySignedUpViewModel';
 import { ActivityModel } from '../../models/activity/ActivityModel';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute } from '@angular/router';
 import { DataAccessService} from '../../services/data-access.service';
-import { Subscription, Observable } from 'rxjs';
-import { Globals } from '../../globals';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-activity',
@@ -36,6 +36,10 @@ export class ActivityComponent implements OnInit {
 
   commentModel = new CommentInsertModel(0,0,"");
 
+  userActivities: Array<ActivityPersonModel> = new Array<ActivityPersonModel>();
+
+  localStorageKey: string = 'activitySignUpPortalData';
+
   constructor(
     private dataAccessService: DataAccessService,
     private routeService: ActivatedRoute,
@@ -48,20 +52,25 @@ export class ActivityComponent implements OnInit {
       this.routeId = Number(params.get('activityId'));
     })
 
-    // check the user cookie to see if they have this.routeId
-    // if it exists, show the participant list/ comment list
-    this.cookieName = `${Globals.COOKIE_NAME}${this.routeId}`;
-    this.cookieValue = this.cookieService.get(this.cookieName);
-    
-    this.userSignedUp = this.cookieValue == '' ? false : true;
-
+    // load the localStorage for this 'user'
+    if(this.getLocalStorageData())
+    {
+      //  check to see if this user has registered for this activity
+      this.userSignedUp = this.userActivities.find(ap => ap.activityId == this.routeId) != undefined;
+    }
     if (this.userSignedUp)
     {
+      // get the activity/person record for this user
+      var activityPerson = this.userActivities.find(ap => ap.activityId == this.routeId);
+      
       this.dataAccessService.getSignedUpActivity(this.routeId).subscribe(
         (returnValue) => {
           this.userActivity = new ActivitySignedUpViewModel().deserialize(returnValue);
           this.commentModel.CommentActivityId = this.routeId;
-          this.commentModel.CommentPersonId = parseInt(this.cookieValue);
+          if(activityPerson?.activityPersonId)
+          {
+            this.commentModel.CommentPersonId = parseInt(activityPerson.activityPersonId.toString());
+          }
         },
         (error) => {
           console.log(error);
@@ -83,12 +92,33 @@ export class ActivityComponent implements OnInit {
     }
   }
 
+  getLocalStorageData(): boolean {
+    // get user activity list from local storage
+    let jsonString = localStorage.getItem(this.localStorageKey);
+    if(jsonString)
+    {
+      this.userActivities = JSON.parse(jsonString);
+      return true;
+    }
+    return false;
+  }
+
+  setLocalStorageData() : void {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(this.userActivities));
+  }
+
   onSubmit(): void  {
     this.submitted = true;
     // here we save the participant data to the model and post it to the API, then if successful, reload the component
     this.dataAccessService.createNewPerson(this.model).subscribe(
       (userId) => {
-        this.cookieService.set(this.cookieName, userId.toString(), 365);
+        // create a new activity/person object
+        let signupObject = new ActivityPersonModel(this.routeId, parseInt(userId.toString()));
+        // add it to local storage
+        this.getLocalStorageData();
+        this.userActivities.push(signupObject);
+        this.setLocalStorageData();
+        // reload the page so that the user can see the signed up
         this.ngOnInit();
       },
       (error) => {

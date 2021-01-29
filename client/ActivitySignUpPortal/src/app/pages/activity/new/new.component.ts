@@ -12,10 +12,10 @@ import { DataAccessService } from '../../../services/data-access.service';
 })
 export class NewActivityComponent implements OnInit {
 
-  constructor(private dataAccessService: DataAccessService, private router: Router) { }
+  model : ActivityInsertModel = new ActivityInsertModel('', '', new Date(), '') ;
+  submitted : boolean = false;
 
-  model = new ActivityInsertModel('', '', new Date(), '') ;
-  submitted = false;
+  constructor(private dataAccessService: DataAccessService, private router: Router) { }
 
   ngOnInit(): void {
   }
