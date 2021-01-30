@@ -4,7 +4,6 @@ import { PersonInsertModel } from '../../models/person/PesonInsertModel';
 import { ActivitySignedUpViewModel } from '../../models/activity/ActivitySignedUpViewModel';
 import { ActivityModel } from '../../models/activity/ActivityModel';
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute } from '@angular/router';
 import { DataAccessService} from '../../services/data-access.service';
 import { Subscription } from 'rxjs';
@@ -42,8 +41,6 @@ export class ActivityComponent implements OnInit {
 
   currentCommentor: number = 0;
 
-  activityImage: File | undefined;
-
   constructor(
     private dataAccessService: DataAccessService,
     private routeService: ActivatedRoute,
@@ -69,8 +66,6 @@ export class ActivityComponent implements OnInit {
       this.dataAccessService.getSignedUpActivity(this.routeId).subscribe(
         (returnValue) => {
           this.userActivity = returnValue;
-          //this.activityImage = returnValue.activityImage;
-          //this.userActivity = new ActivitySignedUpViewModel().deserialize(returnValue);
           this.commentModel.CommentActivityId = this.routeId;
           if(activityPerson?.activityPersonId)
           {
@@ -89,7 +84,6 @@ export class ActivityComponent implements OnInit {
       this.model = new PersonInsertModel("","","",this.routeId);
       this.dataAccessService.getActivity(this.routeId).subscribe(
         (returnValue) => {
-          //this.activityImage = returnValue.activityImage;
           this.activity = returnValue;
         },
         (error) => {
