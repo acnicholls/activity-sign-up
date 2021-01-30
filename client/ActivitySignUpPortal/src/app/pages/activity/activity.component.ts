@@ -131,7 +131,6 @@ export class ActivityComponent implements OnInit {
   }
 
   onCommentSubmit(): void {
-    this.commentModel.CommentPersonId = parseInt(this.cookieService.get(this.cookieName)) 
     this.dataAccessService.createNewComment(this.commentModel).subscribe(
       () => {
         this.commentModel.CommentContent = '';
