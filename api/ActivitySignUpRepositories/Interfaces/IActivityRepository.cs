@@ -8,7 +8,7 @@ namespace ActivitySignUp.Repositories.Interfaces
     public interface IActivityRepository
     {
 
-        Task<int> InsertActivityAsync(ActivityInsertModel model);
+        Task<int> InsertActivityAsync(ActivityInsertModel model, byte[] fileContent);
 
         Task<bool> CheckActivityExistsAsync(string nameToCheck);
 

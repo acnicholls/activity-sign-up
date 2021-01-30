@@ -1,53 +1,55 @@
-    <div class="row justify-content-md-center">
-        <h1>New Activity</h1>
-        <hr>
-        Enter the details of your new activity below
-    </div>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-sm-1 col-md-3 col-lg-4"></div>    
-        <div class="col-sm-1 col-md-3 col-lg-4">    
-            <form (ngSubmit)="onSubmit()" #newActivity="ngForm">
-                <div class="form-group">
+<div class="row">
+    <h1>New Activity</h1>
+</div>
+<div class="row">
+    Enter the details of your new activity below
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <form (ngSubmit)="onSubmit()" #newActivity="ngForm" width="100%">
+                <div>
                     <label for="name">Activity Name</label>
-                    <input nbInput type="text" class="form-control" id="name"
+                    <input nbInput fullWidth type="text" id="name"
                         required
                         [(ngModel)]="model.ActivityName" name="name" #name="ngModel" placeholder="enter the activity name">
                     <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
                         Name is required
                     </div>
                 </div>
-                <div class="form-group">
+                <div>
                     <label for="desc">Activity Description</label>
-                    <input nbInput type="text" class="form-control" id="desc"
+                    <input nbInput fullWidth type="text" id="desc"
                         required
                         [(ngModel)]="model.ActivityDescription" name="desc" #desc="ngModel" placeholder="enter the description of your activity">
                     <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger">
                         Description is required
                     </div>
                 </div>
-                <div class="form-group">
+                <div>
                     <label for="date">Activity Date</label>
-                    <input nbInput type="date" class="form-control" id="date"
+                    <input nbInput fullWidth type="date" id="date"
                         required
                         [(ngModel)]="model.ActivityDateTime" name="date" #date="ngModel" placeholder="yyyy-mm-dd">
                     <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
                         Date is required
                     </div>
                 </div>
-                <div class="form-group">
+                <div>
                     <label for="file">Activity Image</label>
-                    <input nbInput type="file" class="form-control" id="file"
-                        [(ngModel)]="model.ActivityImage" name="file" #file="ngModel" placeholder="select your image"
-                        (change)="onFileChange($event)">
-                    <div [hidden]="file.valid || file.pristine" class="alert alert-danger">
-                        Image is required
-                    </div>
+                    <app-upload #file (onUploadFinished)="uploadFinished($event)"></app-upload>
                 </div>
-                <button type="submit" class="btn btn-success" [disabled]="!newActivity.form.valid">Submit</button>
-                <button type="reset" class="btn btn-reset">Reset</button>
-            </form>
-        </div>
-        <div class="col-sm-1 col-md-3 col-lg-4"></div>    
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <button nbButton type="submit" status="success" [disabled]="!newActivity.form.valid">Submit</button>
+                    <button nbButton type="reset" status="basic">Reset</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </form>
     </div>
+    <div class="col-2"></div>
+</div>

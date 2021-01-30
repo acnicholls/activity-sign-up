@@ -1,8 +1,9 @@
 <nb-layout>
   <nb-layout-header fixed>
-    <div>
-      Welcome to the {{title}}
-    </div>
+    <a href="/"><h1>Welcome to the {{title}}</h1></a>
+    <nb-actions size="medium" class="ml-auto">
+      <nb-action icon="plus-outline" link="/activity/new" status="success" class="ml-auto" title="Create an Activity"></nb-action>
+    </nb-actions>
   </nb-layout-header>
   <nb-layout-column>
     <router-outlet></router-outlet>

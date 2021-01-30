@@ -8,21 +8,26 @@ import { AppComponent } from './app.component';
 import { ActivityListComponent } from './pages/activity-list/activity-list.component';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { NewActivityComponent } from './pages/activity/new/new.component';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { 
   NbThemeModule, 
   NbLayoutModule, 
   NbCardModule,
   NbListModule,
   NbInputModule,
-  NbButtonModule
+  NbButtonModule,
+  NbIconModule,
+  NbActionsModule,
  } from '@nebular/theme';
+import { UploadComponent } from './pages/activity/new/upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ActivityListComponent,
     ActivityComponent,
-    NewActivityComponent
+    NewActivityComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,10 @@ import {
     NbCardModule,
     NbListModule,
     NbInputModule,
-    NbButtonModule
+    NbButtonModule,
+    NbIconModule,
+    NbActionsModule,
+    NbEvaIconsModule
   ],
   providers: [ CookieService ],
   bootstrap: [ AppComponent ]

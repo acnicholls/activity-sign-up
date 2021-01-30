@@ -4,6 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using System.IO;
+using System;
+using System.IO;
+using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace ActivitySignUp.Api.Controllers
 {
@@ -30,6 +36,54 @@ namespace ActivitySignUp.Api.Controllers
         {
             _service = service;
             _logger = logger;
+        }
+
+        /// <summary>
+        /// saves uploaded file to local folder
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("image")]
+        public async Task<ActionResult> UploadActivityImage()
+        {
+
+            try
+            {
+                var formCollection = await Request.ReadFormAsync();
+                var file = formCollection.Files[0];
+                if(file.Length > 2097152)
+                {
+                    return Problem(detail: "The file is larger than 2 mb.", title: "ActivityImage");
+                }
+                if(!file.FileName.EndsWith("jpg", ignoreCase: true, CultureInfo.InvariantCulture))
+                {
+                    return Problem(detail: "Only JPG files are accepted.", title: "ActivityImage");
+                }
+                var folderName = Path.Combine("Resources", "Images");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+                if (file.Length > 0)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var ImagePath = Path.Combine(folderName, fileName);
+
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    return Ok(new { ImagePath });
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+
         }
 
 

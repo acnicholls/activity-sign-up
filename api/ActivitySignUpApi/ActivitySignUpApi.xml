@@ -16,6 +16,12 @@
             <param name="logger"></param>
             <param name="service"></param>
         </member>
+        <member name="M:ActivitySignUp.Api.Controllers.ActivityController.UploadActivityImage">
+            <summary>
+            saves uploaded file to local folder
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ActivitySignUp.Api.Controllers.ActivityController.InsertActivityAsync(ActivitySignUp.Models.Activity.ActivityInsertModel)">
             <summary>
             this method will insert a new activity
@@ -81,47 +87,47 @@
             <param name="person">the model containing the values of the new record</param>
             <returns>the newly inserted Id</returns>
         </member>
-        <member name="T:ActivitySignUpApi.Program">
+        <member name="T:ActivitySignUp.Api.Program">
             <summary>
             the program class
             </summary>
         </member>
-        <member name="M:ActivitySignUpApi.Program.Main(System.String[])">
+        <member name="M:ActivitySignUp.Api.Program.Main(System.String[])">
             <summary>
             the entrypoint
             </summary>
             <param name="args"></param>
         </member>
-        <member name="M:ActivitySignUpApi.Program.CreateHostBuilder(System.String[])">
+        <member name="M:ActivitySignUp.Api.Program.CreateHostBuilder(System.String[])">
             <summary>
             builds the web host
             </summary>
             <param name="args"></param>
             <returns></returns>
         </member>
-        <member name="T:ActivitySignUpApi.Startup">
+        <member name="T:ActivitySignUp.Api.Startup">
             <summary>
              the startup class
             </summary>
         </member>
-        <member name="M:ActivitySignUpApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:ActivitySignUp.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             startup ctor
             </summary>
             <param name="configuration">the application configuration</param>
         </member>
-        <member name="P:ActivitySignUpApi.Startup.Configuration">
+        <member name="P:ActivitySignUp.Api.Startup.Configuration">
             <summary>
             the application configuration
             </summary>
         </member>
-        <member name="M:ActivitySignUpApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:ActivitySignUp.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             this method configures the services container for dependency injection
             </summary>
             <param name="services">the services container from the system's injection process</param>
         </member>
-        <member name="M:ActivitySignUpApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:ActivitySignUp.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
             <summary>
             this method will configure the pipeline
             </summary>

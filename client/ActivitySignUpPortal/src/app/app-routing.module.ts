@@ -5,13 +5,13 @@ import { ActivityListComponent } from './pages/activity-list/activity-list.compo
 import { NewActivityComponent } from './pages/activity/new/new.component';
 
 const routes: Routes = [
-  { path: 'activity/new', component: NewActivityComponent },
+  { path: 'activity/new', component: NewActivityComponent, pathMatch: 'full' },
   { path: 'activity/:activityId', component: ActivityComponent },
   { path: 'activity-list', component: ActivityListComponent },
+  { path: '', redirectTo: '/activity-list', pathMatch: 'full' },
 ];
 
 @NgModule({
-  //imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   imports: [RouterModule.forRoot(routes)],  
   exports: [RouterModule]
 })

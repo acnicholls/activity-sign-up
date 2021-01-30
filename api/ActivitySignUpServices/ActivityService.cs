@@ -7,6 +7,7 @@ using Dapper.AmbientContext;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ActivitySignUp.Services
 {
@@ -111,8 +112,15 @@ namespace ActivitySignUp.Services
                         // check that the activity doesn't already exist
                         if (!(await _repository.CheckActivityExistsAsync(model.ActivityName)))
                         {
-                            var activityId = await _repository.InsertActivityAsync(model);
+                            // use the model's image path to collect the file from the file system
+                            var fileInfo = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), model.ActivityImage));
+                            // convert the file to a byte array for loading into the database
+                            var fileContent = await File.ReadAllBytesAsync(fileInfo.FullName);
+                            // send the call to the database
+                            var activityId = await _repository.InsertActivityAsync(model, fileContent);
                             dbScope.Transaction.Commit();
+                            // delete the file
+                            fileInfo.Delete();
                             return new ServiceResult<int>(activityId);
                         }
                         return new ServiceResult<int>(new ValidationError() { FieldName = "ActivityName", ErrorDetail = "An activity with that name already exists." });

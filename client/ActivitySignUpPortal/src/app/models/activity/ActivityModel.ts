@@ -4,7 +4,7 @@ export class ActivityModel {
     activityName: string | undefined;
     activityDescription: string | undefined;
     activityDateTime: Date | undefined;
-    activityImage: string | undefined;
+    activityImage: File | undefined;
 
     constructor(
 

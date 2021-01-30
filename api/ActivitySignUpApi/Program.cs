@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace ActivitySignUpApi
+namespace ActivitySignUp.Api
 {
     /// <summary>
     /// the program class

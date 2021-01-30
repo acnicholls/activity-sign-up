@@ -42,10 +42,14 @@ namespace ActivitySignUp.Repositories
         /// </summary>
         /// <param name="model">this is the data model containing the field values</param>
         /// <returns>the Id of the new record</returns>
-        public async Task<int> InsertActivityAsync(ActivityInsertModel model)
+        public async Task<int> InsertActivityAsync(ActivityInsertModel model, byte[] fileContent)
         {
-            var parameters = new DynamicParameters(model);
+            var parameters = new DynamicParameters();
             parameters.Add("NewId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("ActivityName", model.ActivityName, dbType: DbType.String, direction: ParameterDirection.Input);
+            parameters.Add("ActivityDescription", model.ActivityDescription, dbType: DbType.String, direction: ParameterDirection.Input);
+            parameters.Add("ActivityDateTime", model.ActivityDateTime, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            parameters.Add("ActivityImage", fileContent, dbType: DbType.Binary, direction: ParameterDirection.Input);
             await DbContext.ExecuteAsync(StoredProcedures.ActivityInsert, parameters, commandType: CommandType.StoredProcedure);
             return parameters.Get<int>("NewId");
         }

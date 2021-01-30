@@ -10,13 +10,10 @@ export class AppComponent implements OnInit {
 
   title = 'Activity SignUp Portal';
 
-  constructor(
-    private routeService: Router
-    ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    // automatically send the user to the activity-list component
-    this.routeService.navigateByUrl('/activity-list');
+    
   }
 
 }

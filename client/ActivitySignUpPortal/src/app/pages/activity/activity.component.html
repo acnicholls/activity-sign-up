@@ -1,100 +1,125 @@
 <div *ngIf="userSignedUp; then thenBlock else elseBlock"></div>
 
-<!--
-    if the user has a cookie with the activityID this page will show the participant list and a comment list
-    the comment list is static from load time, but eventually a signalR type instant communication could be added to keep it a live discussion about the event
--->
 <ng-template #thenBlock>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>{{userActivity.activityName}}</h1>
-                On {{userActivity.activityDateTime | date:"yyyy-MM-dd"}}
-                <hr/>
-                <div>{{userActivity.activityDescription}}</div>
-            </div>
+    <div class="card-row">
+        <nb-card accent="success" fullWidth>
+            <nb-card-header>
+                <h1>{{activity.activityName}}</h1>
+            </nb-card-header>
+            <nb-card-body>
+                <div>
+                    <img src="data:image/jpg;base64,{{activity.activityImage}}" width="291" height="173"/>
+                </div>
+                <div>{{activity.activityDescription}}</div>                
+            </nb-card-body>
+            <nb-card-footer>
+                On {{activity.activityDateTime | date:"yyyy-MM-dd"}}
+            </nb-card-footer>
+        </nb-card> 
+    </div>
+    <div class="card-row">
+        <div class="card-col">
+            <nb-card>
+                <nb-card-header>
+                    <h3>Participants</h3>
+                </nb-card-header>
+                <nb-card-body>
+                    <nb-list>
+                        <nb-list-item *ngFor="let person of userActivity.participantList">
+                            {{person.personName}}
+                        </nb-list-item>
+                    </nb-list>
+                </nb-card-body>
+            </nb-card>
         </div>
-        <div class="row spaceRow"></div>
-        <div class="ActivityParticipantList col-sm-4 col-md-4 col-lg-4">
-            <h3>Participants</h3>
-            <div *ngFor="let person of userActivity.participantList">
-                {{person.personName}} <br/>
-            </div>
-        </div>
-        <div class="col-2"></div>
-        <div class="ActivityCommentList col-sm-6 col-md-6 col-lg-6">
-            <h3>Comments</h3>
-            <div *ngFor="let comment of userActivity.commentList">
-                {{comment.commentDetail}} <br/>
-                {{comment.commentContent}} <br/>
-                <hr>
-            </div>
-            <div class="commentForm col-12">
-                <form (ngSubmit)="onCommentSubmit()" #newComment="ngForm">
-                    <div class="input-group">
-                        <input nbInput type="text" class="form-control" id="comment"
+        <div class="card-col">
+            <nb-card>
+                <nb-card-header>
+                    <h3>Comments</h3>
+                </nb-card-header>
+                <nb-card-body>
+                    <nb-list>
+                        <nb-list-item *ngFor="let comment of userActivity.commentList">
+                            <div [ngClass]="(comment.commentorId === this.currentCommentor)?'ml-auto':'mr-auto'">
+                                {{comment.commentDetail}} <br />
+                                {{comment.commentContent}} 
+                            </div>
+                        </nb-list-item>
+                    </nb-list>
+                </nb-card-body>
+                <nb-card-footer>
+                    <form (ngSubmit)="onCommentSubmit()" #newComment="ngForm">
+                        <input nbInput type="text" id="comment"
                         required
                         [(ngModel)]="commentModel.CommentContent" name="commentContent" #commentContent="ngModel" placeholder="enter your comments here">
-                        <button nbButton type="submit" class="btn btn-success" [disabled]="!newComment.form.valid">Submit</button>                    
-                    </div>
-                </form>
-            </div>
+                        <button nbButton type="submit" status="success" [disabled]="!newComment.form.valid">Submit</button>                    
+                    </form>
+                </nb-card-footer>
+            </nb-card>
         </div>
     </div>
 </ng-template>
 
 
 <!--
-on this page the sign up form will appear if the user does not have a cookie for this activity ID with their request
+on this page the sign up form will appear if the user does not have their UserId stored in localStorage for this activity ID 
 -->
 <ng-template #elseBlock>
-    <div class="row">
-        <div class="col-1"></div>
-        <div>
-            <h1>{{ activity.activityName }}</h1>
-            <br/>
-            On {{activity.activityDateTime | date:"yyyy-MM-dd"}}
-            <br/>
-            <div>{{activity.activityDescription}}</div>
-        </div> 
-        <div class="col-1"></div>
+    <div class="card-row">
+        <nb-card accent="success" fullWidth>
+            <nb-card-header>
+                <h1>{{ activity.activityName }}</h1>
+            </nb-card-header>
+            <nb-card-body>
+                <div>
+                    <img src="data:image/jpg;base64,{{activity.activityImage}}" width="291" height="173"/>
+                </div>
+                <div>{{activity.activityDescription}}</div>                
+            </nb-card-body>
+            <nb-card-footer>
+                On {{activity.activityDateTime | date:"yyyy-MM-dd"}}
+            </nb-card-footer>
+        </nb-card> 
     </div>
-    <div class="row spaceRow"></div>
-    <div class="row justify-content-md-center">
-        <div class="col-sm-6 col-md-6 col-lg-6">       
-            <h4>Sign up below to attend:</h4>        
-            <form (ngSubmit)="onSubmit()" #newParticipant="ngForm">
-                <div class="form-group">
-                    <label for="name">First Name</label>
-                    <input nbInput type="text" class="form-control" id="name"
-                        required
-                        [(ngModel)]="model.PersonFirstName" name="name" #name="ngModel" placeholder="enter your first name">
-                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-                        First name is required
+    <div class="card-row">
+        <nb-card>      
+            <nb-card-header>
+                <h4>Sign up below to attend:</h4>        
+            </nb-card-header>
+            <nb-card-body>
+                <form (ngSubmit)="onSubmit()" #newParticipant="ngForm" width="100%">
+                    <div>
+                        <label for="name">First Name</label>
+                        <input nbInput fullWidth type="text" id="name"
+                            required
+                            [(ngModel)]="model.PersonFirstName" name="name" #name="ngModel" placeholder="enter your first name">
+                        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                            First name is required
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="last">Last Name</label>
-                    <input nbInput type="text" class="form-control" id="last"
-                        required
-                        [(ngModel)]="model.PersonLastName" name="last" #last="ngModel" placeholder="enter your last name">
-                    <div [hidden]="last.valid || last.pristine" class="alert alert-danger">
-                        Last name is required
+                    <div>
+                        <label for="last">Last Name</label>
+                        <input nbInput fullWidth type="text" id="last"
+                            required
+                            [(ngModel)]="model.PersonLastName" name="last" #last="ngModel" placeholder="enter your last name">
+                        <div [hidden]="last.valid || last.pristine" class="alert alert-danger">
+                            Last name is required
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input nbInput type="email" class="form-control" id="email"
-                        required
-                        [(ngModel)]="model.PersonEmail" name="email" #email="ngModel" placeholder="enter your email">
-                    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                        Email is required
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input nbInput fullWidth type="email" id="email"
+                            required
+                            [(ngModel)]="model.PersonEmail" name="email" #email="ngModel" placeholder="enter your email">
+                        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                            Email is required
+                        </div>
                     </div>
-                </div>
-                <button nbButton type="submit" class="btn btn-success" [disabled]="!newParticipant.form.valid">Submit</button>
-                <button nbButton type="reset" class="btn btn-reset">Reset</button>
-            </form>   
-        </div>    
+                    <button nbButton type="submit" status="success" [disabled]="!newParticipant.form.valid">Submit</button>
+                    <button nbButton type="reset" status="basic">Reset</button>
+                </form>  
+            </nb-card-body>
+        </nb-card> 
     </div>
 </ng-template>
 

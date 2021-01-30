@@ -40,6 +40,8 @@ export class ActivityComponent implements OnInit {
 
   localStorageKey: string = 'activitySignUpPortalData';
 
+  currentCommentor: number = 0;
+
   constructor(
     private dataAccessService: DataAccessService,
     private routeService: ActivatedRoute,
@@ -69,7 +71,8 @@ export class ActivityComponent implements OnInit {
           this.commentModel.CommentActivityId = this.routeId;
           if(activityPerson?.activityPersonId)
           {
-            this.commentModel.CommentPersonId = parseInt(activityPerson.activityPersonId.toString());
+            this.currentCommentor = activityPerson.activityPersonId;
+            this.commentModel.CommentPersonId = this.currentCommentor;
           }
         },
         (error) => {

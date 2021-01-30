@@ -8,17 +8,18 @@ using Dapper.AmbientContext;
 using Dapper.AmbientContext.Storage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
-using Swashbuckle.Examples;
-using Microsoft.OpenApi.Models;
-using Swashbuckle;
 
-namespace ActivitySignUpApi
+namespace ActivitySignUp.Api
 {
     /// <summary>
     ///  the startup class
@@ -90,6 +91,11 @@ namespace ActivitySignUpApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+            services.Configure<FormOptions>(o => {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
         }
 
         /// <summary>
@@ -106,6 +112,12 @@ namespace ActivitySignUpApi
             }
 
             // app.UseHttpsRedirection();
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
 
             app.UseSwagger();
 

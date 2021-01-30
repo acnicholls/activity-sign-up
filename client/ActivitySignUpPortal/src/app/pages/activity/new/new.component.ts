@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ActivityImageUploadResponseModel } from '../../../models/activity/ActivityImageUploadResponseModel';
 import { ActivityInsertModel } from '../../../models/activity/ActivityInsertModel';
 import { DataAccessService } from '../../../services/data-access.service';
 
@@ -12,29 +12,23 @@ import { DataAccessService } from '../../../services/data-access.service';
 })
 export class NewActivityComponent implements OnInit {
 
-  model : ActivityInsertModel = new ActivityInsertModel('', '', new Date(), '') ;
-  submitted : boolean = false;
+  model : ActivityInsertModel = new ActivityInsertModel('', '', new Date()) ;
+  fileSubmitted : boolean = false;
+  response: ActivityImageUploadResponseModel = new ActivityImageUploadResponseModel('');
+  
 
   constructor(private dataAccessService: DataAccessService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onFileChange(event: any) {
-    const reader = new FileReader();
-
-    if(event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        this.model.ActivityImage = reader.result as string;
-      };
-    }
+  uploadFinished = (event: any) => {
+    this.response.ImagePath = event.imagePath;
+    this.fileSubmitted = true;
   }
 
   onSubmit(): void {
-    this.submitted = true;
+    this.model.ActivityImage = this.response.ImagePath;
     this.dataAccessService.createNewActivity(this.model).subscribe(
       (data) => {
         this.router.navigateByUrl('/activity/' + data);

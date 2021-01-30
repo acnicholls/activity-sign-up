@@ -1,6 +1,7 @@
 
-<h1>Activity List</h1>
-<!-- change this to calculate 3 per row, then have mutliple rows...-->
+<h3>Activity List</h3>
+Here you will see a list of upcoming activities that you can sign up for.  Click on an activity to continue.
+<div class="spaceRow"></div>
 <div class="row">
     <div *ngFor="let activity of activityList; index as i">
         <div>
@@ -9,7 +10,7 @@
                     {{activity.activityDateTime | date:'yyyy-MM-dd' }}
                 </nb-card-header>
                 <nb-card-body>
-                    <img src="{{activity.activityImage}}"/>
+                    <img src="data:image/jpg;base64,{{activity.activityImage}}" width="291" height="173"/>
                 </nb-card-body>
                 <nb-card-footer>
                     <a class="activityLink" [routerLink]="['/activity',activity.activityId]">

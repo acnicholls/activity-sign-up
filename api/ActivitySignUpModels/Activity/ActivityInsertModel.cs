@@ -9,6 +9,6 @@ namespace ActivitySignUp.Models.Activity
         public string ActivityName { get; set; }
         public string ActivityDescription { get; set; }
         public DateTime ActivityDateTime { get; set; }
-        public byte[] ActivityImage { get; set; }
+        public string ActivityImage { get; set; }
     }
 }
