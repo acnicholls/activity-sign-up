@@ -8,11 +8,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>ActivitySignUpApi.xml</DocumentationFile>
-    <OutputPath>A:\source\githubRepos\activity-sign-up\api\ActivitySignUpApi\bin\Debug\netcoreapp3.1</OutputPath>
+    <OutputPath>bin\Debug\netcoreapp3.1</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>ActivitySignUpApi\ActivitySignUpApi.xml</DocumentationFile>
+    <DocumentationFile>ActivitySignUpApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

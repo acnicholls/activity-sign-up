@@ -1,7 +1,5 @@
 ﻿using ActivitySignUp.Models.Comment;
-using ActivitySignUp.Repositories.Interfaces;
 using ActivitySignUp.Services.Interfaces;
-using ActivitySignUp.Validation.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -44,6 +42,7 @@ namespace ActivitySignUp.Api.Controllers
         {
             try
             {
+                _logger.LogInformation("InsertCommentAsync executing...");
                 var srvResult = await _service.InsertCommentAsync(comment);
                 if (srvResult.IsSuccessful)
                 {

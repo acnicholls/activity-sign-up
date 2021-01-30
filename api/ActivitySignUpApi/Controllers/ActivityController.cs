@@ -43,6 +43,7 @@ namespace ActivitySignUp.Api.Controllers
         {
             try
             {
+                _logger.LogInformation("InsertActivityAsync executing...");
                 var srvResult = await _service.InsertActivityAsync(activity);
                 if (srvResult.IsSuccessful)
                 {
@@ -70,6 +71,7 @@ namespace ActivitySignUp.Api.Controllers
         {
             try
             {
+                _logger.LogInformation("GetActivityListAsync executing...");
                 var srvResult = await _service.GetActivityListAsync();
                 if (srvResult.IsSuccessful)
                 {
@@ -98,6 +100,7 @@ namespace ActivitySignUp.Api.Controllers
         {
             try
             {
+                _logger.LogInformation("GetInitialActivityViewAsync executing...");
                 var srvResult = await _service.GetInitialActivityViewAsync(activityId);
                 if (srvResult.IsSuccessful)
                 {
@@ -126,6 +129,7 @@ namespace ActivitySignUp.Api.Controllers
         {
             try
             {
+                _logger.LogInformation("GetSignedUpActivityViewAsync executing...");
                 var srvResult = await _service.GetSignedUpActivityViewAsync(activityId);
                 if (srvResult.IsSuccessful)
                 {

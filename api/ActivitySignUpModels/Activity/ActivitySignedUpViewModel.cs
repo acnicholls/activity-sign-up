@@ -12,7 +12,7 @@ namespace ActivitySignUp.Models.Activity
         public string ActivityName { get; set; }
         public string ActivityDescription { get; set; }
         public DateTime ActivityDateTime { get; set; }
-        public string ActivityImage { get; set; }
+        public byte[] ActivityImage { get; set; }
         public List<PersonListModel> ParticipantList { get; set; }
 
         public List<CommentListModel> CommentList { get; set; }

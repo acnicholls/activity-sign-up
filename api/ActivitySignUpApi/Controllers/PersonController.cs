@@ -42,6 +42,7 @@ namespace ActivitySignUp.Api.Controllers
         {
             try
             {
+                _logger.LogInformation("InsertPersonAsync executing...");
                 var srvResult = await _service.InsertPersonAsync(person);
                 if (srvResult.IsSuccessful)
                 {
