@@ -1,18 +1,20 @@
-.ActivityPageDescription
-    /*background-color: #2e2929;*/
-    color: #2b2b21
-  
 
-.ActivityParticipantList
-    float: left
-  
+:host 
+  display: block
+  max-height: 50rem
+  overflow-x: hidden
+  overflow-y: auto
 
-.ActivityCommentList
-    float: right
-    height: 100%
-  
 
-.commentForm
-    position: fixed
-    bottom: 0
-  
+.card-row 
+  display: flex
+  margin: 0 -0.5rem
+
+
+.card-col 
+  flex: 1 0 calc(50% - 1rem)
+  margin: 0 0.5rem
+
+.comment-card
+    host:
+        height: 60rem

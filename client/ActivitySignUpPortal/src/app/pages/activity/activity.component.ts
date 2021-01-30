@@ -42,10 +42,11 @@ export class ActivityComponent implements OnInit {
 
   currentCommentor: number = 0;
 
+  activityImage: File | undefined;
+
   constructor(
     private dataAccessService: DataAccessService,
     private routeService: ActivatedRoute,
-    private cookieService: CookieService
     ) {     }
 
   ngOnInit(): void {
@@ -67,7 +68,9 @@ export class ActivityComponent implements OnInit {
       
       this.dataAccessService.getSignedUpActivity(this.routeId).subscribe(
         (returnValue) => {
-          this.userActivity = new ActivitySignedUpViewModel().deserialize(returnValue);
+          this.userActivity = returnValue;
+          //this.activityImage = returnValue.activityImage;
+          //this.userActivity = new ActivitySignedUpViewModel().deserialize(returnValue);
           this.commentModel.CommentActivityId = this.routeId;
           if(activityPerson?.activityPersonId)
           {
@@ -82,10 +85,11 @@ export class ActivityComponent implements OnInit {
     }
     else
     {
-      // if it doesn't show the sign up view
+      // nothing in storage? show the sign up view
       this.model = new PersonInsertModel("","","",this.routeId);
       this.dataAccessService.getActivity(this.routeId).subscribe(
         (returnValue) => {
+          //this.activityImage = returnValue.activityImage;
           this.activity = returnValue;
         },
         (error) => {

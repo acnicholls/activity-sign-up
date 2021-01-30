@@ -1,14 +1,14 @@
 <div *ngIf="userSignedUp; then thenBlock else elseBlock"></div>
 
 <ng-template #thenBlock>
-    <div class="card-row">
+    <div class="row">
         <nb-card accent="success" fullWidth>
             <nb-card-header>
                 <h1>{{activity.activityName}}</h1>
             </nb-card-header>
             <nb-card-body>
                 <div>
-                    <img src="data:image/jpg;base64,{{activity.activityImage}}" width="291" height="173"/>
+                    <img src="data:image/jpg;base64,{{userActivity.activityImage}}" width="291" height="173"/>
                 </div>
                 <div>{{activity.activityDescription}}</div>                
             </nb-card-body>
@@ -33,7 +33,7 @@
             </nb-card>
         </div>
         <div class="card-col">
-            <nb-card>
+            <nb-card class="comment-card">
                 <nb-card-header>
                     <h3>Comments</h3>
                 </nb-card-header>
@@ -66,15 +66,15 @@ on this page the sign up form will appear if the user does not have their UserId
 -->
 <ng-template #elseBlock>
     <div class="card-row">
-        <nb-card accent="success" fullWidth>
+        <nb-card accent="success">
             <nb-card-header>
-                <h1>{{ activity.activityName }}</h1>
+                <h1>{{activity.activityName}}</h1>
             </nb-card-header>
             <nb-card-body>
-                <div>
+                <div class="row">
                     <img src="data:image/jpg;base64,{{activity.activityImage}}" width="291" height="173"/>
-                </div>
-                <div>{{activity.activityDescription}}</div>                
+                    {{activity.activityDescription}}
+                </div>                
             </nb-card-body>
             <nb-card-footer>
                 On {{activity.activityDateTime | date:"yyyy-MM-dd"}}
