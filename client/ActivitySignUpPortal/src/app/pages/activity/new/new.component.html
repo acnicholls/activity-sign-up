@@ -39,12 +39,15 @@
                 </div>
                 <div>
                     <label for="file">Activity Image</label>
-                    <app-upload #file (onUploadFinished)="uploadFinished($event)"></app-upload>
+                    <app-upload id="file" (onUploadFinished)="uploadFinished($event)"></app-upload>
+                    <div [hidden]="fileSubmitted" class="alert alert-danger">
+                        Image is required
+                    </div>
                 </div>
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button nbButton type="submit" status="success" [disabled]="!newActivity.form.valid">Submit</button>
+                    <button nbButton type="submit" status="success" [disabled]="!newActivity.form.valid && !fileSubmitted">Submit</button>
                     <button nbButton type="reset" status="basic">Reset</button>
                 </div>
                 <div class="col-4"></div>
