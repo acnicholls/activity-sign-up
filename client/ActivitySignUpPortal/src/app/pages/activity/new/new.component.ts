@@ -12,7 +12,7 @@ import { DataAccessService } from '../../../services/data-access.service';
 })
 export class NewActivityComponent implements OnInit {
 
-  model : ActivityInsertModel = new ActivityInsertModel('', '', new Date()) ;
+  model : ActivityInsertModel = new ActivityInsertModel('', '', undefined) ;
   fileSubmitted : boolean = false;
   response: ActivityImageUploadResponseModel = new ActivityImageUploadResponseModel('');
   
