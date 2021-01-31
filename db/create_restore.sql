@@ -9,15 +9,6 @@ go
 CREATE LOGIN [activity] WITH PASSWORD='4c1vIty[}';
 go
 
-use ActivitySignUpDatabase;
-go
-
-CREATE USER [activity] FOR LOGIN [activity];
-go
-
-ALTER ROLE [db_owner] ADD MEMBER [activity];
-go
-
 use master;
 go
 
@@ -28,3 +19,11 @@ MOVE 'ActivitySignUpDatabase' TO '/var/opt/mssql/data/ActivitySignUpDatabase.mdf
 MOVE 'ActivitySignUpDatabase_log' TO '/var/opt/mssql/data/ActivitySignUpDatabase_log.ldf';
 go
 
+use ActivitySignUpDatabase;
+go
+
+CREATE USER [activity] FOR LOGIN [activity];
+go
+
+ALTER ROLE [db_owner] ADD MEMBER [activity];
+go
