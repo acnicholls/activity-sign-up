@@ -64,7 +64,7 @@ COPY ./ActivitySignUpApi/Controllers ./ActivitySignUpApi/Controllers/
 COPY ./ActivitySignUpApi/ActivitySignUpApi.xml /app/ActivitySignUpApi.xml
 
 # json file for ConnectionStrings
-COPY ./appsettings.Production.json ./ActivitySignUpApi/
+COPY ./ActivitySignUpApi/appsettings.Production.json ./ActivitySignUpApi/
 
 RUN dotnet publish -c Release -o out
 

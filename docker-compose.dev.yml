@@ -7,9 +7,8 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     image: activity_client:dev
-    ports:
-      - 8001:80
-      - 4200:4200
+    links:
+      - api
   api:
     container_name: api
     build:
@@ -18,24 +17,19 @@ services:
     image: activity_api:dev
     links:
       - db
-    ports:
-      - 8080:80
-      - 52366:52366
   db:
     container_name: db
     build:
       context: ./db
       dockerfile: Dockerfile.dev
     image: activity_db:dev
-    ports:
-      - 1431:1431
-      - 1433:1433
-      - 1434:1434
   proxy:
     container_name: proxy
     build:
       context: ./proxy
       dockerfile: Dockerfile.dev
     image: activity_proxy:dev
+    links:
+      - client
     ports:
       - 80:80
