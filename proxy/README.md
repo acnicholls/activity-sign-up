@@ -1,0 +1,2 @@
+# ActivitySignUp Portal proxy
+in order to alleviate CORS issues when the browser tries to access a different host to get the data for the front end, I built a reverse proxy from NGINX from the base docker instance.  The files used to do so are here.

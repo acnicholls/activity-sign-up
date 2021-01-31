@@ -1,0 +1,2 @@
+# ActivitySignUpDatabase
+there isn't really many files here.  I sort of started a database building project and then abandonded it in favour of the API and front end.  The docker files for building the dev instance of the database server are here.
