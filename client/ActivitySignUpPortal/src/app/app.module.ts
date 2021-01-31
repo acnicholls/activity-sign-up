@@ -44,7 +44,7 @@ import { UploadComponent } from './pages/activity/new/upload.component';
     NbActionsModule,
     NbEvaIconsModule
   ],
-  providers: [ CookieService ],
+  providers: [],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
