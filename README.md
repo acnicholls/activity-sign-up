@@ -31,3 +31,6 @@ my vision was to produce a website that displayed a list of available activities
 
 # development enhancements
 - add a webpacker image to the docker container, to make live-reloading much faster.
+
+# caveats
+- the repository exposes user secrets for things like database passwords, etc.  It shouldn't, but this needed to work on someone else's machine.  Normally these would/could be environment variables, or in a file on a build server that only a senior developer has access to, or in a key vault on Azure/AWS, basically somewhere safe where any person getting their hands on the repository would not normally have access to them.  
