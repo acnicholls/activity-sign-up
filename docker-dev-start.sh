@@ -1,1 +1,1 @@
-docker-compose -f docker-compose.dev.yml up --build 
+docker-compose -f docker-compose.dev.yml build --build-arg SA_PASSWORD=${SA_PASSWORD} && docker-compose -f docker-compose.dev.yml up
