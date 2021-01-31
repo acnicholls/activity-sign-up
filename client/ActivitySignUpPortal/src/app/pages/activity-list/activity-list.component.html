@@ -1,0 +1,27 @@
+
+<h3>Activity List</h3>
+Here you will see a list of upcoming activities that you can sign up for.  Click on an activity to continue.
+<div class="spaceRow"></div>
+<div class="row">
+    <div *ngFor="let activity of activityList; index as i">
+        <div>
+            <nb-card>
+                <nb-card-header>
+                    {{activity.activityDateTime | date:'yyyy-MM-dd' }}
+                </nb-card-header>
+                <nb-card-body>
+                    <img src="data:image/jpg;base64,{{activity.activityImage}}" width="291" height="173"/>
+                </nb-card-body>
+                <nb-card-footer>
+                    <a class="activityLink" [routerLink]="['/activity',activity.activityId]">
+                        {{activity.activityName}}
+                    </a>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+        <div class="clearfix visible-lg" *ngIf="(i + 1) % 6 == 0"></div>
+        <div class="clearfix visible-md" *ngIf="(i + 1) % 4 == 0"></div>
+        <div class="clearfix visible-sm" *ngIf="(i + 1) % 3 == 0"></div>
+        <div class="clearfix visible-xs" *ngIf="(i + 1) % 2 == 0"></div>                
+    </div>
+</div>

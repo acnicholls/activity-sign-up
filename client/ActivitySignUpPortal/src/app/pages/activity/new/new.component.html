@@ -1,0 +1,58 @@
+<div class="row">
+    <h1>New Activity</h1>
+</div>
+<div class="row">
+    Enter the details of your new activity below
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <form (ngSubmit)="onSubmit()" #newActivity="ngForm" width="100%">
+                <div>
+                    <label for="name">Activity Name</label>
+                    <input nbInput fullWidth type="text" id="name"
+                        required
+                        [(ngModel)]="model.ActivityName" name="name" #name="ngModel" placeholder="enter the activity name">
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                        Name is required
+                    </div>
+                </div>
+                <div>
+                    <label for="desc">Activity Description</label>
+                    <input nbInput fullWidth type="text" id="desc"
+                        required
+                        [(ngModel)]="model.ActivityDescription" name="desc" #desc="ngModel" placeholder="enter the description of your activity">
+                    <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger">
+                        Description is required
+                    </div>
+                </div>
+                <div>
+                    <label for="date">Activity Date</label>
+                    <input nbInput fullWidth type="date" id="date"
+                        required
+                        [(ngModel)]="model.ActivityDateTime" name="date" #date="ngModel" placeholder="yyyy-mm-dd">
+                    <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+                        Date is required
+                    </div>
+                </div>
+                <div>
+                    <label for="file">Activity Image</label>
+                    <app-upload id="file" (onUploadFinished)="uploadFinished($event)"></app-upload>
+                    <div [hidden]="fileSubmitted" class="alert alert-danger">
+                        Image is required
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <button nbButton type="submit" status="success" [disabled]="!newActivity.form.valid && !fileSubmitted">Submit</button>
+                    <button nbButton type="reset" status="basic">Reset</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </form>
+    </div>
+    <div class="col-2"></div>
+</div>

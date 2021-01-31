@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  client:
+    container_name: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    image: activity_client:dev
+    links:
+      - api
+  api:
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    image: activity_api:dev
+    links:
+      - db
+  db:
+    container_name: db
+    build:
+      context: ./db
+      dockerfile: Dockerfile.dev
+    image: activity_db:dev
+  proxy:
+    container_name: proxy
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile.dev
+    image: activity_proxy:dev
+    links:
+      - client
+    ports:
+      - 80:80
