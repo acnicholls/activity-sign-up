@@ -350,6 +350,7 @@ MigrationBackup/
 .ionide/
 
 # production settings files
-appsettings.Production.json
+# appsettings.Production.json   # needed so it works for others...change passwords as you see fit
+# create_restore.sql            # needed so it works for others...but holds database password
 
-create_restore.sql
+
