@@ -17,7 +17,7 @@ This application was created as an part of an interview process
 It is unfinished.  While I have strong C# and SQL skills, my javascript skills are not so great.  My TypeScript skills until this project were non-existent.  I will continue to work on this in my spare time and complete it.
 
 # documentation
-you will find the project desciription in [this](link to appear later) folder, along will the documentation that I created to outline my process, my thoughts on the UI and the database.  The documentation is less than I would try to give for a project with a longer timeline, but due to the time constraint, it was mostly hand-written.  I normally would transcribe the UML to Visio documents, and for the UI I normally would expect the client to provide "what they want" but since I have recently learned about Figma, I will soon begin to use that.
+you will find the project desciription in [this](https://github.com/acnicholls/activity-sign-up/tree/master/docs) folder, along will the documentation that I created to outline my process, my thoughts on the UI and the database.  The documentation is less than I would try to give for a project with a longer timeline, but due to the time constraint, it was mostly hand-written.  I normally would transcribe the UML to Visio documents, and for the UI I normally would expect the client to provide "what they want" but since I have recently learned about Figma, I will soon begin to use that.
 
 # the application
 this application is an Angular 11 user interface with a dotnetcore5.0 C# REST Web Api, which stores it's data in a SQL Server database, built using the Onion architecture pattern.  
