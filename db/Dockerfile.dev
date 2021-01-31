@@ -1,13 +1,15 @@
 FROM mcr.microsoft.com/mssql/server
 
 ENV ACCEPT_EULA=Y
-ENV MSSQL_SA_PASSWORD=S3cureP4ssW0rd
+ARG SA_PASSWORD
+ENV MSSQL_SA_PASSWORD=${SA_PASSWORD}
+ENV MSSQL_PID=Developer
 
 # copy sql backup
-# COPY ./activity.bak /tmp/activity.bak
+COPY ./ActivitySignUpDatabase.bak /tmp/ActivitySignUpDatabase.bak
 
 # copy the create and restore script
-COPY ./create_db.sql /tmp/create_db.sql
+COPY ./create_restore.sql /tmp/create_restore.sql
 
 RUN (/opt/mssql/bin/sqlservr & ) | grep -q "Service Broker manager has started" && \
-/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P S3cureP4ssW0rd -i /tmp/create_db.sql
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -i /tmp/create_restore.sql

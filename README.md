@@ -2,11 +2,10 @@
 Activity Sign Up web application
 
 # running the application
-1. start the web API with Visual Studio 2019
-2. using a terminal navigate to the ActivitySignUpPortal folder
-3. run > ng serve
-4. navigate to http://localhost:4200/activity-list this is supposed to be the default page
-
+1. clone the repository to a machine with Docker installed
+2. run `./docker-dev-start.sh` to start a docker container with the application running in it.
+## or
+1. go to `https://activity.acnicholls.com`
 
 # purpose
 This application was created as an part of an interview process
@@ -14,11 +13,18 @@ This application was created as an part of an interview process
 # overview
 It is unfinished.  While I have strong C# and SQL skills, my javascript skills are not so great.  My TypeScript skills until this project were non-existent.  I will continue to work on this in my spare time and complete it.
 
-# ActivitySignUpDocumentation
-you will find the project desciription in this folder, along will the documentation that I created to outline my process, my thoughts on the UI and the database.  The documentation is less than I would try to give for a project with a longer timeline, but due to the time constraint, it was mostly hand-written.  I normally would transcribe the UML to Visio documents, and for the UI I normally would expect the client to provide "what they want" but since I have recently learned about Figma, I will soon begin to use that.
+# documentation
+you will find the project desciription in [this](link to appear later) folder, along will the documentation that I created to outline my process, my thoughts on the UI and the database.  The documentation is less than I would try to give for a project with a longer timeline, but due to the time constraint, it was mostly hand-written.  I normally would transcribe the UML to Visio documents, and for the UI I normally would expect the client to provide "what they want" but since I have recently learned about Figma, I will soon begin to use that.
 
 # the application
-this application is an Angular 10 user interface with a dotnetcore3.1 C# REST Web Api, built using the Onion architecture pattern that I also recently learned.  This is my first project to start from scratch using this pattern and these two languages together.  
+this application is an Angular 11 user interface with a dotnetcore5.0 C# REST Web Api, which stores it's data in a SQL Server database, built using the Onion architecture pattern.  
 
 # my vision
-my vision was to produce a website that displayed a list of available activities when the user first visits.  The user would click on an activity and be taken to a page that would display more in-depth details about the activity as well as a sign-up form.  If the user submits the sign up form, the page then switches the view of the activity to a list of participants on the left, with a list of comments on the right.  I am hoping to make the comments list real-time to allow the users to discuss the activity in real-time.  
+my vision was to produce a website that displayed a list of available activities when the user first visits.  The user would click on an activity and be taken to a page that would display more in-depth details about the activity as well as a sign-up form.  If the user submits the sign up form, the page then switches the view of the activity to a list of participants on the left, with a list of comments on the right.  
+
+# possible future enhancements
+- real-time comments/chat window, via a websocket project
+- add a splash page where the user enters their details to start, use that data as the 'single sign on' for all activities.  User then clicks a button to sign up for events
+
+# development enhancements
+- add a webpacker image to the docker container, to make live-reloading much faster.
