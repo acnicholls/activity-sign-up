@@ -72,6 +72,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:3.1
 
 WORKDIR /app
 
+RUN mkdir /app/Resources
+RUN mkdir /app/Resources/Images
+
 COPY --from=build-deps /app/out .
 
 ENV ASPNETCORE_ENVIRONMENT=Production
