@@ -14,13 +14,13 @@ run `./docker-dev-stop.dh`
 This application was created as an part of an interview process
 
 # overview
-It is unfinished.  While I have strong C# and SQL skills, my javascript skills are not so great.  My TypeScript skills until this project were non-existent.  I will continue to work on this in my spare time and complete it.
+The project expects little input from the user, only their basic contact details.  Name and Email.  That will create a user record for the Activity they have chosen, and they can then begin to communicate with the other participants via the comments section.  As the date for an activity is reached, it will drop off the list, and users can create new activities with a single click and some data.
 
 # documentation
 you will find the project desciription in [this](https://github.com/acnicholls/activity-sign-up/tree/master/docs) folder, along will the documentation that I created to outline my process, my thoughts on the UI and the database.  The documentation is less than I would try to give for a project with a longer timeline, but due to the time constraint, it was mostly hand-written.  I normally would transcribe the UML to Visio documents, and for the UI I normally would expect the client to provide "what they want" but since I have recently learned about Figma, I will soon begin to use that.
 
 # the application
-this application is an Angular 11 user interface with a dotnetcore5.0 C# REST Web Api, which stores it's data in a SQL Server database, built using the Onion architecture pattern.  
+this application is an Angular 11 user interface with a dotnetcore5.0 C# REST Web Api, which stores it's data in a SQL Server database, built using the Onion architecture pattern.  There is an NGINX reverse proxy handling all the requests for both the front end and the api, to alleviate CORS issues and protect the other ports of the remaining containers.
 
 # my vision
 my vision was to produce a website that displayed a list of available activities when the user first visits.  The user would click on an activity and be taken to a page that would display more in-depth details about the activity as well as a sign-up form.  If the user submits the sign up form, the page then switches the view of the activity to a list of participants on the left, with a list of comments on the right.  
