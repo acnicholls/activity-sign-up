@@ -8,7 +8,7 @@ Activity Sign Up web application
 1. go to `https://activity.acnicholls.com`
 
 # stopping the application
-run `./docker-dev-stop.dh`
+run `./docker-dev-stop.sh`
 
 # purpose
 This application was created as an part of an interview process
