@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://localhost/api',
+  apiUrl: 'https://activity.acnicholls.com/api',
   production: true
 };

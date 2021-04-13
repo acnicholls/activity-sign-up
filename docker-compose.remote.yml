@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  client:
+    image: 192.168.1.118:5000/activity_client:local
+    networks:
+      activity:
+        aliases:
+          - client
+  api:
+    image: 192.168.1.118:5000/activity_api:local
+    networks:
+      activity:
+        aliases:
+          - api
+  db:
+    image: 192.168.1.118:5000/activity_db:local
+    networks:
+      activity:
+        aliases:
+          - db
+  proxy:
+    image: 192.168.1.118:5000/activity_proxy:local
+    ports:
+      - 80:80
+    networks:
+      activity:
+        aliases:
+          - proxy
+
+networks:
+  activity:
