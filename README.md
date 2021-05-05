@@ -15,10 +15,11 @@ This application was created as an part of an interview process
 
 # project timeline
 about 70 hrs total
-api ~ 20 hrs 
-client ~ 35 hrs
-debugging ~ 10 hrs
-dockerizing ~ 5 hrs
+ - api ~ 20 hrs 
+ - client ~ 35 hrs
+ - debugging ~ 10 hrs
+ - dockerizing ~ 5 hrs
+
 # overview
 The project expects little input from the user, only their basic contact details.  Name and Email.  That will create a user record for the Activity they have chosen, and they can then begin to communicate with the other participants via the comments section.  As the date for an activity is reached, it will drop off the list, and users can create new activities with a single click and some data.
 
