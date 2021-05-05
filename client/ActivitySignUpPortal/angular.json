@@ -66,6 +66,27 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "dev":{
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1500kb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
             }
           }
         },
@@ -77,6 +98,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ActivitySignUpPortal:build:production"
+            },
+            "dev": {
+              "browserTarget": "ActivtiySignUpPortal:build:dev"
             }
           }
         },

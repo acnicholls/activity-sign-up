@@ -14,7 +14,6 @@ namespace ActivitySignUp.Api.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-
         private IPersonService _service;
         private ILogger<PersonController> _logger;
 

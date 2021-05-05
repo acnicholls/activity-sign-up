@@ -3,13 +3,10 @@ using ActivitySignUp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Threading.Tasks;
-using System.IO;
-using System;
+using System.Globalization;
 using System.IO;
 using System.Net.Http.Headers;
-using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
+using System.Threading.Tasks;
 
 namespace ActivitySignUp.Api.Controllers
 {

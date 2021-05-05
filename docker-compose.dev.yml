@@ -7,22 +7,12 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     image: activity_client:dev
-    links:
-      - api
-  api:
-    container_name: api
-    build:
-      context: ./api
-      dockerfile: Dockerfile.dev
-    image: activity_api:dev
-    links:
-      - db
-  db:
-    container_name: db
-    build:
-      context: ./db
-      dockerfile: Dockerfile.dev
-    image: activity_db:dev
+    ports:
+      - 4200:4200
+    networks:
+      activity:
+        aliases:
+          - client      
   proxy:
     container_name: proxy
     build:
@@ -33,3 +23,10 @@ services:
       - client
     ports:
       - 80:80
+    networks:
+      activity:
+        aliases:
+          - proxy      
+    
+networks:
+  activity:

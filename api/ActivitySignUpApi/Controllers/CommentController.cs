@@ -14,7 +14,6 @@ namespace ActivitySignUp.Api.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-
         private readonly ICommentService _service;
         private readonly ILogger<CommentController> _logger;
 

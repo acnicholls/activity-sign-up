@@ -4,19 +4,23 @@
     <div class="row">
         <nb-card accent="success" fullWidth>
             <nb-card-header>
-                <h1>{{userActivity.activityName}}</h1>
+                <div class="mr-auto">
+                    <h1>{{userActivity.activityName}}</h1>
+                </div>
+                <div class="ml-auto">
+                    On {{userActivity.activityDateTime | date:"yyyy-MM-dd"}}
+                </div>
             </nb-card-header>
             <nb-card-body>
                 <div class="row">
-                    <img src="data:image/jpg;base64,{{userActivity.activityImage}}" width="291" height="173"/>
+                    <div class="col">
+                        <img src="data:image/jpg;base64,{{userActivity.activityImage}}" width="291" height="173"/>
+                    </div>
+                    <div class="col">
+                        {{userActivity.activityDescription}}
+                    </div>
                 </div>
-                <div class="row">
-                    {{userActivity.activityDescription}}
-                </div>                
             </nb-card-body>
-            <nb-card-footer>
-                On {{userActivity.activityDateTime | date:"yyyy-MM-dd"}}
-            </nb-card-footer>
         </nb-card> 
     </div>
     <div class="card-row">
