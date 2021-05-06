@@ -1,0 +1,20 @@
+<nb-card accent="success" fullWidth>
+    <nb-card-header>
+        <div class="mr-auto">
+            <h1>{{activity.activityName}}</h1>
+        </div>
+        <div class="ml-auto">
+            On {{activity.activityDateTime | date:"yyyy-MM-dd"}}
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col">
+                <img src="data:image/jpg;base64,{{activity.activityImage}}" width="291" height="173"/>
+            </div>
+            <div class="col">
+                {{activity.activityDescription}}
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card> 

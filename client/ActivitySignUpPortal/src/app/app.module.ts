@@ -19,6 +19,7 @@ import {
   NbActionsModule,
  } from '@nebular/theme';
 import { UploadComponent } from './pages/activity/new/upload.component';
+import { InfoComponent } from './pages/activity/info/info.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UploadComponent } from './pages/activity/new/upload.component';
     ActivityListComponent,
     ActivityComponent,
     NewActivityComponent,
-    UploadComponent
+    UploadComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

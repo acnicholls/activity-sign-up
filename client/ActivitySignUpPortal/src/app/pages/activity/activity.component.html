@@ -2,26 +2,7 @@
 
 <ng-template #thenBlock>
     <div class="row">
-        <nb-card accent="success" fullWidth>
-            <nb-card-header>
-                <div class="mr-auto">
-                    <h1>{{userActivity.activityName}}</h1>
-                </div>
-                <div class="ml-auto">
-                    On {{userActivity.activityDateTime | date:"yyyy-MM-dd"}}
-                </div>
-            </nb-card-header>
-            <nb-card-body>
-                <div class="row">
-                    <div class="col">
-                        <img src="data:image/jpg;base64,{{userActivity.activityImage}}" width="291" height="173"/>
-                    </div>
-                    <div class="col">
-                        {{userActivity.activityDescription}}
-                    </div>
-                </div>
-            </nb-card-body>
-        </nb-card> 
+        <app-info [activity]="userActivity" class="activityInfo"></app-info>
     </div>
     <div class="card-row">
         <div class="card-col">
@@ -72,22 +53,7 @@ on this page the sign up form will appear if the user does not have their UserId
 -->
 <ng-template #elseBlock>
     <div class="card-row">
-        <nb-card accent="success">
-            <nb-card-header>
-                <h1>{{activity.activityName}}</h1>
-            </nb-card-header>
-            <nb-card-body>
-                <div class="row">
-                    <img src="data:image/jpg;base64,{{activity.activityImage}}" width="291" height="173"/>
-                </div>
-                <div class="row">
-                    {{activity.activityDescription}}
-                </div>                
-            </nb-card-body>
-            <nb-card-footer>
-                On {{activity.activityDateTime | date:"yyyy-MM-dd"}}
-            </nb-card-footer>
-        </nb-card> 
+        <app-info [activity]="activity" class="activityInfo"></app-info>
     </div>
     <div class="card-row">
         <nb-card>      
