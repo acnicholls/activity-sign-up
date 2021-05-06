@@ -4,4 +4,6 @@ ng serve \
     --host client \
     --port 4200 \
     --prod=false \
-    --public-host=localhost
+    --public-host=localhost \
+    --disable-host-check \
+    --poll
