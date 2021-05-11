@@ -57,6 +57,7 @@ COPY ./ActivitySignUpValidation/Interfaces ./ActivitySignUpValidation/Interfaces
 COPY ./ActivitySignUpApi/Program.cs ./ActivitySignUpApi/
 COPY ./ActivitySignUpApi/Startup.cs ./ActivitySignUpApi/
 COPY ./ActivitySignUpApi/appsettings.json ./ActivitySignUpApi/appsettings.json
+COPY ./ActivitySignUpApi/appsettings.Production.json ./ActivitySignUpApi/appsettings.Production.json
 COPY ./ActivitySignUpApi/Controllers ./ActivitySignUpApi/Controllers/
 
 RUN dotnet publish -c Release -o out
