@@ -353,4 +353,6 @@ MigrationBackup/
 # appsettings.Production.json   # needed so it works for others...change passwords as you see fit
 # create_restore.sql            # needed so it works for others...but holds database password
 
+# password file for docker registry
+.dockerpass
 
