@@ -21,36 +21,24 @@ RUN dotnet restore
 COPY ./ActivitySignUpConstants/StoredProcedures.cs ./ActivitySignUpConstants/
 
 # Models
-COPY ./ActivitySignUpModels/ServiceError.cs ./ActivitySignUpModels/
-COPY ./ActivitySignUpModels/ServiceResult.cs ./ActivitySignUpModels/
-COPY ./ActivitySignUpModels/ValidationError.cs ./ActivitySignUpModels/
-COPY ./ActivitySignUpModels/ValidationResults.cs ./ActivitySignUpModels/
+COPY ./ActivitySignUpModels ./ActivitySignUpModels/
 COPY ./ActivitySignUpModels/Activity ./ActivitySignUpModels/Activity/
 COPY ./ActivitySignUpModels/Comment ./ActivitySignUpModels/Comment/
 COPY ./ActivitySignUpModels/Person ./ActivitySignUpModels/Person/
 
 # Repositories
-COPY ./ActivitySignUpRepositories/BaseRepository.cs ./ActivitySignUpRepositories/
-COPY ./ActivitySignUpRepositories/ActivityRepository.cs ./ActivitySignUpRepositories/
-COPY ./ActivitySignUpRepositories/CommentRepository.cs ./ActivitySignUpRepositories/
-COPY ./ActivitySignUpRepositories/PersonRepository.cs ./ActivitySignUpRepositories/
-COPY ./ActivitySignUpRepositories/DbConnectionFactory.cs ./ActivitySignUpRepositories/
+COPY ./ActivitySignUpRepositories ./ActivitySignUpRepositories/
 COPY ./ActivitySignUpRepositories/Interfaces ./ActivitySignUpRepositories/Interfaces/
 
 # Repository Tests
 COPY ./ActivitySignUpRepositoryTests ./ActivitySignUpRepositoryTests/
 
 # Services
-COPY ./ActivitySignUpServices/BaseService.cs ./ActivitySignUpServices/
-COPY ./ActivitySignUpServices/PersonService.cs ./ActivitySignUpServices/
-COPY ./ActivitySignUpServices/CommentService.cs ./ActivitySignUpServices/
-COPY ./ActivitySignUpServices/ActivityService.cs ./ActivitySignUpServices/
+COPY ./ActivitySignUpServices ./ActivitySignUpServices/
 COPY ./ActivitySignUpServices/Interfaces ./ActivitySignUpServices/Interfaces/
 
 # Validation
-COPY ./ActivitySignUpValidation/ActivityValidators.cs ./ActivitySignUpValidation/
-COPY ./ActivitySignUpValidation/PersonValidators.cs ./ActivitySignUpValidation/
-COPY ./ActivitySignUpValidation/CommentValidators.cs ./ActivitySignUpValidaton/
+COPY ./ActivitySignUpValidation ./ActivitySignUpValidation/
 COPY ./ActivitySignUpValidation/Interfaces ./ActivitySignUpValidation/Interfaces/
 
 # Api Project
