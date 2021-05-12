@@ -50,12 +50,16 @@ COPY ./ActivitySignUpApi/Controllers ./ActivitySignUpApi/Controllers/
 
 RUN dotnet publish -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/sdk:3.1 as final-build
 
 WORKDIR /app
 
 COPY --from=build-deps /app/out .
 
-ENV ASPNETCORE_ENVIRONMENT=Production
+RUN ["mkdir", "/app/Resources"]
+RUN ["mkdir", "/app/Resources/Images"]
 
-CMD ["dotnet" "ActivtySignUp.dll"]
+ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_URLS=http://+:5000
+
+ENTRYPOINT ["dotnet", "/app/ActivitySignUpApi.dll"]

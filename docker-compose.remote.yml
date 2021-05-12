@@ -9,6 +9,8 @@ services:
           - client
   api:
     image: acr.acnicholls.com/activity_api:latest
+    links:
+      - db
     networks:
       activity:
         aliases:
