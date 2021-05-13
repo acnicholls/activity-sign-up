@@ -8,6 +8,7 @@ import { ActivityListComponent } from './pages/activity-list/activity-list.compo
 import { ActivityComponent } from './pages/activity/activity.component';
 import { NewActivityComponent } from './pages/activity/new/new.component';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { Router } from '@angular/router';
 import { 
   NbThemeModule, 
   NbLayoutModule, 
@@ -49,4 +50,11 @@ import { InfoComponent } from './pages/activity/info/info.component';
   providers: [],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+  // for diagnostic purposes
+  constructor(router: Router) {
+    const replacer = (key: any, value: any) => (typeof value === 'function') ? value.name : value;
+
+    console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+  }
+ }
