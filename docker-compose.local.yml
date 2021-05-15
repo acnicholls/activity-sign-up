@@ -7,8 +7,6 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     image: activity_client:local
-    links:
-      - api
   api:
     container_name: api
     build:
@@ -31,5 +29,6 @@ services:
     image: activity_proxy:local
     links:
       - client
+      - api
     ports:
       - 80:80
