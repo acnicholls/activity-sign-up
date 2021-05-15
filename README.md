@@ -28,7 +28,8 @@ You can also run the application  on a machine with only the following installed
 2. Git & git bash
 
 todo this you run the following command in git bash to start a docker container at http://localhost that uses the API, client, db and proxy almost as it would in production, as in this case the database is built into a container, and is inacessible to a database administrator.
-1. run `/.docker-local-start.sh`, 
+1. clone the repository
+2. run `/.docker-local-start.sh`, 
 
 
 ## My Demo
