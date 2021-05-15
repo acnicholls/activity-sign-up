@@ -99,3 +99,4 @@ then
     cd ..
 
 fi
+docker logout $REPO_LOCATION

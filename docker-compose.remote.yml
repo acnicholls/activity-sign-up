@@ -25,6 +25,9 @@ services:
     image: acr.acnicholls.com/activity_proxy:latest
     ports:
       - 80:80
+    links:
+      - client
+      - api
     networks:
       activity:
         aliases:
