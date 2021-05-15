@@ -1,10 +1,17 @@
 # activity-sign-up
-Activity Sign Up web application
+Activity Sign Up web application programming interface
 
-# running the application
-1. start the web API with Visual Studio 2019
-2. using a terminal navigate to the ActivitySignUpPortal folder
-3. run > ng serve
-4. navigate to http://localhost:4200/activity-list 
+# intention
+this application is an attempt to replicate the onion architecture
+
+it uses dapper with ambient context to access the SQL database using stored procedures from the database
+
+the controllers call the service layer with it's model to execute an action
+
+the service layer calls the validation layer and if the model is valid, the repository method is called
+
+some tests are written which can be executed at build time to determine if all the classes do what they are supposed to
+
+
 
 
