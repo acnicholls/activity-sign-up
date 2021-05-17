@@ -1,4 +1,3 @@
-import { DataAccessService } from './../../../services/data-access.service';
 import { HttpEventType, HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Globals } from '../../../globals';
@@ -11,6 +10,7 @@ import { Globals } from '../../../globals';
 export class UploadComponent implements OnInit {
   public progress: number = 0;
   public message: string = '';
+
   @Output() public onUploadFinished = new EventEmitter();
 
   constructor(private http: HttpClient) { }
@@ -29,19 +29,25 @@ export class UploadComponent implements OnInit {
 
     this.http.post(`${Globals.DATA_ACCESS_PREFIX}/activity/image`, formData, {reportProgress: true, observe: 'events'})
       .subscribe(event => {
+        // console.log(event);
         if (event.type === HttpEventType.UploadProgress)
         {
           if(event.total)
           {
             this.progress = Math.round(100 * event.loaded / event.total);
-          }
-          else{
+          } else {
             this.message = 'Uploading...';
           }
+        } else if (event.type === HttpEventType.Response) {
+            this.message = 'Upload success.';
+            this.onUploadFinished.emit(event.body);
         }
-        else if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
-          this.onUploadFinished.emit(event.body);
+      },
+      error => {
+        if(error.status === 500) {
+          this.message = error.error.detail;
+          this.progress = 0;
+          formData.delete('file');
         }
       });
   }

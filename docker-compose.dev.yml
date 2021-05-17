@@ -7,8 +7,11 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     image: activity_client:dev
+    volumes:
+      - ./client/ActivitySignUpPortal:/app
     ports:
       - 4200:4200
+      - 49153:49153
     networks:
       activity:
         aliases:
