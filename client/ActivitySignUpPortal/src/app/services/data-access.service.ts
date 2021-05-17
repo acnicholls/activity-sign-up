@@ -2,7 +2,7 @@ import { CommentInsertModel } from '../models/comment/CommentInsertModel';
 import { PersonInsertModel } from '../models/person/PesonInsertModel';
 import { ActivitySignedUpViewModel } from '../models/activity/ActivitySignedUpViewModel';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Globals } from '../globals';
 import { ActivityInsertModel } from '../models/activity/ActivityInsertModel';
 import { ActivityListModel } from '../models/activity/ActivityListModel';
