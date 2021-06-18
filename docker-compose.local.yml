@@ -5,27 +5,34 @@ services:
     container_name: client
     build:
       context: ./client
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.local
     image: activity_client:local
+    volumes:
+      - ./client/ActivitySignUpPortal:/app
+    ports:
+      - 3000:3000
   api:
     container_name: api
     build:
       context: ./api
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.local
     image: activity_api:local
     links:
       - db
+    ports:
+      - 5000:5000
+      - 5001:5001
   db:
     container_name: db
     build:
       context: ./db
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.local
     image: activity_db:local
   proxy:
     container_name: proxy
     build:
       context: ./proxy
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.local
     image: activity_proxy:local
     links:
       - client

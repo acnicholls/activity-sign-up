@@ -10,9 +10,12 @@ RUN dotnet restore
 
 RUN dotnet build -c Debug -o out
 
+RUN cp /app/ActivitySignUpApi/appsettings*.json /app
+
 RUN mkdir /app/Resources
 RUN mkdir /app/Resources/Images
 
-ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_ENVIRONMENT=local
+ENV ASPNETCORE_URLS='http://+:5000;https://+:5001;'
 
-ENTRYPOINT ["dotnet", "ActivitySignUpApi.dll"]
+ENTRYPOINT ["dotnet", "/app/out/ActivitySignUpApi.dll"]

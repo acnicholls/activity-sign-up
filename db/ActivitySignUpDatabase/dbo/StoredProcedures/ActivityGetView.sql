@@ -19,8 +19,8 @@ begin
 		concat (
 		p.PersonFirstName, ' ',
 		p.PersonLastName, ' on ',
-		format(c.CommentDateTime, 'yyyy-mm-dd'), ' at ',
-		format(c.CommentDateTime, 'HH:mm') ) as CommentDetail,
+		format(c.CommentDateTime at time zone 'Eastern Standard Time', 'yyyy-mm-dd'), ' at ',
+		format(c.CommentDateTime at time zone 'Eastern Standard Time', 'HH:mm') ) as CommentDetail,
 		CommentContent
 	from
 		Comment c inner join Person p on c.CommentPersonId = p.PersonId
