@@ -10,7 +10,7 @@ COPY ./ActivitySignUpPortal .
 
 # install npm packges
 RUN npm install
-RUN npm install -g @angular/cli@10.0.4
+# RUN npm install -g @angular/cli@10.0.4
 
 #expose HTTP port
 EXPOSE 4200
