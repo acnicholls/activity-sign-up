@@ -14,7 +14,7 @@ COPY ./ActivitySignUpPortal .
 
 # install npm packges
 RUN npm install
-RUN npm install -g @angular/cli@10.0.4
+# RUN npm install -g @angular/cli@10.0.4
 
 
 # run the tests
