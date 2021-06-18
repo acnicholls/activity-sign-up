@@ -1,0 +1,17 @@
+FROM node:12.18.1 as build
+
+WORKDIR /app
+
+ENV CHOKIDAR_USEPOLLING=true
+ENV PATH /app/node_modules/.bin:$PATH
+
+# copy the application files
+COPY ./activity-sign-up-portal .
+
+# install npm packges
+RUN yarn install
+
+#expose HTTP port
+EXPOSE 3000 9229
+
+CMD ["./start-dev.sh"]
