@@ -44,8 +44,10 @@ export class UploadComponent implements OnInit {
         }
       },
       error => {
-        if(error.status === 500) {
-          this.message = error.error.detail;
+        // need to handle 413 here, since NGINX on the production VM doesn't allow large files.
+        if(error.status === 500 || error.status === 413) {
+          this.message = error.status ===500 ? error.error.detail : 'The file is larger than 2 mb.';
+          //console.log(error);
           this.progress = 0;
           formData.delete('file');
         }
