@@ -1,0 +1,21 @@
+FROM mcr.microsoft.com/dotnet/sdk:3.1 as build-deps
+
+WORKDIR /app
+
+# copy the solution file
+COPY . .
+
+# restore nuget packages
+RUN dotnet restore
+
+RUN dotnet build -c Debug -o out
+
+RUN cp /app/ActivitySignUpApi/appsettings*.json /app
+
+RUN mkdir /app/Resources
+RUN mkdir /app/Resources/Images
+
+ENV ASPNETCORE_ENVIRONMENT=nano
+ENV ASPNETCORE_URLS='http://+:5000;https://+:5001;'
+
+ENTRYPOINT ["dotnet", "/app/out/ActivitySignUpApi.dll"]

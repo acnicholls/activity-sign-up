@@ -73,8 +73,54 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.local.ts"
                 }
-              ]
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1500kb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]              
             },
+            "nano":{
+              "fileReplacements":[
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.nano.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1500kb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]              
+            },            
             "dev":{
               "optimization": true,
               "outputHashing": "all",
@@ -109,6 +155,9 @@
             },
             "local": {
               "browserTarget": "ActivitySignUpPortal:build:local"
+            },
+            "nano": {
+              "browserTarget": "ActivitySignUpPortal:build:nano"
             },
             "dev": {
               "browserTarget": "ActivtiySignUpPortal:build:dev"

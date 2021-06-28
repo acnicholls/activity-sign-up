@@ -1,0 +1,19 @@
+FROM node:12.18.1 as build
+
+WORKDIR /app
+
+ENV CHOKIDAR_USEPOLLING=true
+ENV PATH /app/node_modules/.bin:$PATH
+
+# copy the application files
+COPY ./ActivitySignUpPortal .
+
+# install npm packges
+RUN npm install
+# RUN npm install -g @angular/cli@10.0.4
+
+#expose HTTP port
+EXPOSE 4200
+EXPOSE 49153
+
+CMD ["./start-local.sh"]

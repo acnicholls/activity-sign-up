@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  client:
+    image: acr.acnicholls.com/activity_client:nano
+    volumes:
+        - ./client/ActivitySignUpPortal:/app
+    ports:
+        - 3000:3000    
+    networks:
+      activity:
+        aliases:
+          - client
+  api:
+    image: acr.acnicholls.com/activity_api:nano
+    links:
+        - db
+    ports:
+        - 5000:5000
+        - 5001:5001    
+    networks:
+      activity:
+        aliases:
+          - api
+  db:
+    image: acr.acnicholls.com/activity_db:nano
+    networks:
+      activity:
+        aliases:
+          - db
+  proxy:
+    image: acr.acnicholls.com/activity_proxy:nano
+    ports:
+      - 80:80
+    links:
+      - client
+      - api
+    networks:
+      activity:
+        aliases:
+          - proxy
+
+networks:
+  activity:
