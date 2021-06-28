@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# total build time 429.462 seconds
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ "$CURRENT_BRANCH" != "master" ]];
+then
+    echo "Aborting script because you are not on the master branch.";
+    exit 1
+fi
+
+echo "on master branch, building deployment artefacts...";
+
+ 
 docker builder prune -af
 
 read -p "Have you incremented your version number? (yes/no)" EXECUTE
@@ -11,11 +24,12 @@ fi
 
 echo "Answer 1 for yes and 0 for no to the follow questions to refine your build."
 
-read -p "Do you want to build the client image?" rebuild_client
-read -p "Do you want to build the api image?" rebuild_api
-read -p "Do you want to build the db image?" rebuild_db
-read -p "Do you want to build the proxy image?" rebuild_proxy
+read -p "Do you want to build the client image? " rebuild_client
+read -p "Do you want to build the api image? " rebuild_api
+read -p "Do you want to build the db image? " rebuild_db
+read -p "Do you want to build the proxy image? " rebuild_proxy
 
+START=$(date +%s%N)
 
 #####  global params
 REPO_LOCATION=acr.acnicholls.com
@@ -100,3 +114,5 @@ then
 
 fi
 docker logout $REPO_LOCATION
+
+echo "total build time $(echo "scale=3;($(date +%s%N) - ${START})/(1*10^09)" | bc) seconds"
