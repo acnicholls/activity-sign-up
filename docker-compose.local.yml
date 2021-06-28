@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.8"
 
 services:
   client:
@@ -11,6 +11,10 @@ services:
       - ./client/ActivitySignUpPortal:/app
     ports:
       - 3000:3000
+    networks:
+      activity:
+        aliases:
+          - client
   api:
     container_name: api
     build:
@@ -22,12 +26,22 @@ services:
     ports:
       - 5000:5000
       - 5001:5001
+    networks:
+      activity:
+        aliases:  
+          - api    
   db:
     container_name: db
     build:
       context: ./db
       dockerfile: Dockerfile.local
     image: activity_db:local
+    networks:
+      activity:
+        aliases:    
+          - db
+    volumes:
+      - db_data:/var/opt/mssql/data:rw
   proxy:
     container_name: proxy
     build:
@@ -39,3 +53,14 @@ services:
       - api
     ports:
       - 80:80
+    networks:
+      activity:
+        aliases:
+          - proxy      
+
+networks:
+  activity:
+
+volumes:
+  db_data:
+      
