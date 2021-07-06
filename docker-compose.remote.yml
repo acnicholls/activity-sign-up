@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.8"
 
 services:
   client:
@@ -21,6 +21,8 @@ services:
       activity:
         aliases:
           - db
+    volumes:
+      - db_data:/var/opt/mssql/data:rw
   proxy:
     image: acr.acnicholls.com/activity_proxy:latest
     ports:
@@ -35,3 +37,6 @@ services:
 
 networks:
   activity:
+
+volumes:
+  db_data:
