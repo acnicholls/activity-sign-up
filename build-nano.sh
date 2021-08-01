@@ -25,7 +25,7 @@ REPO_LOCATION=acr.acnicholls.com
 REPO_USERNAME=activity-acr
 
 # login to the container registry
-cat /root/.dockerpass | docker login $REPO_LOCATION -u $REPO_USERNAME --password-stdin
+cat ./.dockerpass | docker login $REPO_LOCATION -u $REPO_USERNAME --password-stdin
 
 # then we build and push each requested image
 if [ $rebuild_client -eq 1 ] 
