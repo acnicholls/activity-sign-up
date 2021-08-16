@@ -10,6 +10,7 @@ using System;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
 namespace ActivitySignUp.RespositoryTests
 {
@@ -33,14 +34,14 @@ namespace ActivitySignUp.RespositoryTests
         }
 
         [AssemblyInitialize]
-        public static void AssemblyInit(TestContext testContext)
+        public static void AssemblyInit(TestContext testContext, IHostEnvironment environment)
         {
 
             Configuration = GetIConfigurationRoot(testContext.TestRunDirectory);
 
             AmbientDbContextStorageProvider.SetStorage(new AsyncLocalContextStorage());
 
-            ContextFactory = new AmbientDbContextFactory(new DbConnectionFactory(Configuration));
+            ContextFactory = new AmbientDbContextFactory(new DbConnectionFactory(Configuration, environment));
 
             ContextFactory.Create();
 

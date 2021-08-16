@@ -75,6 +75,14 @@
                 }
               ]
             },
+            "arm64":{
+              "fileReplacements":[
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.arm64.ts"
+                }
+              ]
+            },
             "dev":{
               "optimization": true,
               "outputHashing": "all",
@@ -110,6 +118,9 @@
             "local": {
               "browserTarget": "ActivitySignUpPortal:build:local"
             },
+            "arm64": {
+              "browserTarget": "ActivitySignUpPortal:build:arm64"
+            },            
             "dev": {
               "browserTarget": "ActivtiySignUpPortal:build:dev"
             }

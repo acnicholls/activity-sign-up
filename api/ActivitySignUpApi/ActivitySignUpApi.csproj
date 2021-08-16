@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>ActivitySignUp.Api</RootNamespace>
     <UserSecretsId>c12b8bf5-e1b6-42d1-a0dc-23245c6d6ce6</UserSecretsId>
   </PropertyGroup>
