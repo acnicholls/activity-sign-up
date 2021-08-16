@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-
+using Microsoft.Extensions.Hosting;
 
 namespace ActivitySignUp.Repositories
 {
@@ -14,13 +14,18 @@ namespace ActivitySignUp.Repositories
 
         private IConfiguration _configuration;
 
+        private IHostEnvironment _environment;
+
         /// <summary>
         /// basic ctor
         /// </summary>
         /// <param name="configuration">the application configuration</param>
-        public DbConnectionFactory(IConfiguration configuration)
+        public DbConnectionFactory(
+            IConfiguration configuration,
+            IHostEnvironment environment)
         {
             _configuration = configuration;
+            _environment = environment;
         }
 
         /// <summary>
@@ -29,7 +34,23 @@ namespace ActivitySignUp.Repositories
         /// <returns>IDbConnection</returns>
         public IDbConnection Create()
         {
-            return new SqlConnection(_configuration.GetConnectionString("ActivitySignUpDatabase"));
+            switch(_environment.EnvironmentName)
+            {
+                case "Production":
+                {
+                    return new SqlConnection(_configuration.GetConnectionString("ActivitySignUpDatabase_Production"));
+                }
+                case "arm64-latest":
+                {
+                    return new SqlConnection(_configuration.GetConnectionString("ActivitySignUpDatabase_arm64-latest"));
+                }
+                case "local":
+                {
+                    // ActivitySignUpDatabase_local
+                    return new SqlConnection(_configuration.GetConnectionString("ActivitySignUpDatabase_local"));                    
+                }
+            }
+            return new SqlConnection(_configuration.GetConnectionString("ActivitySignUpDatabase"));            
         }
        
 

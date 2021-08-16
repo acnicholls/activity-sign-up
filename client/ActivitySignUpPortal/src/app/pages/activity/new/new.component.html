@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button nbButton type="submit" status="success" [disabled]="!newActivity.form.valid && !fileSubmitted">Submit</button>
+                    <button nbButton type="submit" status="success" [disabled]="!newActivity.form.valid || !fileSubmitted">Submit</button>
                     <button nbButton type="reset" status="basic">Reset</button>
                 </div>
                 <div class="col-4"></div>
@@ -55,4 +55,4 @@
         </form>
     </div>
     <div class="col-2"></div>
-</div>
+</div> 

@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  client:
+    image: acr.acnicholls.com/activity_client:arm64-latest
+    networks:
+      activity:
+        aliases:
+          - client
+  api:
+    image: acr.acnicholls.com/activity_api:arm64-latest
+    networks:
+      activity:
+        aliases:
+          - api
+  proxy:
+    image: acr.acnicholls.com/activity_proxy:arm64-latest
+    ports:
+      - 80:80
+    links:
+      - client
+      - api
+    networks:
+      activity:
+        aliases:
+          - proxy
+
+networks:
+  activity:
