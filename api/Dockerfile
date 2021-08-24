@@ -46,6 +46,7 @@ COPY ./ActivitySignUpApi/Program.cs ./ActivitySignUpApi/
 COPY ./ActivitySignUpApi/Startup.cs ./ActivitySignUpApi/
 COPY ./ActivitySignUpApi/appsettings.json ./ActivitySignUpApi/appsettings.json
 COPY ./ActivitySignUpApi/appsettings.Production.json ./ActivitySignUpApi/appsettings.Production.json
+COPY ./ActivitySignUpApi/secrets.Production.json ./ActivitySignUpApi/secrets.json
 COPY ./ActivitySignUpApi/Controllers ./ActivitySignUpApi/Controllers/
 
 RUN dotnet publish -c Release -o out

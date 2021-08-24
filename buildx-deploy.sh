@@ -55,7 +55,7 @@ if [ $rebuild_client -eq 1 ]
 then
 
     cd client
-    docker buildx build --rm --load \
+    docker buildx build --rm --load --platform linux/amd64,linux/arm64 \
         -t activity_client:latest \
         -f Dockerfile \
         .
@@ -71,7 +71,7 @@ if [ $rebuild_api -eq 1 ]
 then
     cd api
 
-    docker buildx build --rm --load \
+    docker buildx build --rm --load --platform linux/amd64,linux/arm64 \
         -t activity_api:latest \
         -f Dockerfile \
         .
@@ -88,7 +88,7 @@ if [ $rebuild_db -eq 1 ]
 then
     cd db
 
-    docker buildx build --rm --load \
+    docker buildx build --rm --load --platform linux/amd64 \
         -t activity_db:latest \
         -f Dockerfile \
         .
@@ -105,7 +105,7 @@ if [ $rebuild_proxy -eq 1 ]
 then
     cd proxy
 
-    docker buildx build --rm --load \
+    docker buildx build --rm --load --platform linux/amd64,linux/arm64 \
         -t activity_proxy:latest \
         -f Dockerfile \
         .
