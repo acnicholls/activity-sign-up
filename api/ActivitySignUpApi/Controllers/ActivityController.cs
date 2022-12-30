@@ -1,8 +1,10 @@
 ﻿using ActivitySignUp.Models.Activity;
 using ActivitySignUp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Net.Http.Headers;
@@ -46,14 +48,14 @@ namespace ActivitySignUp.Api.Controllers
             try
             {
                 var formCollection = await Request.ReadFormAsync();
-                var file = formCollection.Files[0];
-                if(file.Length > 2097152)
+                IFormFile file = formCollection.Files[0];
+                if (file.Length > 2097152)
                 {
                     return Problem(detail: "The file is larger than 2 mb.", title: "ActivityImage");
                 }
-                if(!file.FileName.EndsWith("jpg", ignoreCase: true, CultureInfo.InvariantCulture))
+                if (!IsFileNameWithImageExtension(file.FileName))
                 {
-                    return Problem(detail: "Only JPG files are accepted.", title: "ActivityImage");
+                    return Problem(detail: "Only JPG and PNG files are accepted.", title: "ActivityImage");
                 }
                 var folderName = Path.Combine("Resources", "Images");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
@@ -81,6 +83,26 @@ namespace ActivitySignUp.Api.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
 
+        }
+
+        private bool IsFileNameWithImageExtension(string fileName)
+        {
+            // TODO: make this a configuration option
+            var acceptedImageFormats = new List<string> { ".jpg", ".jpeg", ".png" };
+            var accepted = false;
+            var extensionIndex = fileName.LastIndexOf(".");
+            string fileFormat = fileName.Substring(extensionIndex);
+
+            // now compare each allowed extension against the actual file format.
+            foreach(var format in acceptedImageFormats)
+            {
+                accepted = fileFormat == format;
+                if(accepted == true)
+                {
+                    break;
+                }
+            }
+            return accepted;
         }
 
 
