@@ -91,7 +91,7 @@ namespace ActivitySignUp.Api.Controllers
             var acceptedImageFormats = new List<string> { ".jpg", ".jpeg", ".png" };
             var accepted = false;
             var extensionIndex = fileName.LastIndexOf(".");
-            string fileFormat = fileName.Substring(extensionIndex);
+            string fileFormat = fileName[extensionIndex..];
 
             // now compare each allowed extension against the actual file format.
             foreach(var format in acceptedImageFormats)
